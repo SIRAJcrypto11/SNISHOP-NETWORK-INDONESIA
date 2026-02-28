@@ -4,8 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // === Header Scroll Effect ===
+    // === Header Scroll Effect (Optimized for 60FPS) ===
     const header = document.querySelector('.header');
+    let isScrolling = false;
 
     function handleScroll() {
         if (window.scrollY > 50) {
@@ -13,9 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             header.classList.remove('scrolled');
         }
+        isScrolling = false;
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(handleScroll);
+            isScrolling = true;
+        }
+    }, { passive: true });
 
     // === Mobile Menu Toggle ===
     const menuToggle = document.querySelector('.menu-toggle');
@@ -100,12 +107,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const scrollToTopBtn = document.getElementById('scrollToTop');
 
     if (scrollToTopBtn) {
-        // Show/hide button based on scroll position
-        window.addEventListener('scroll', function () {
+        // Show/hide button based on scroll position - 60FPS Optimized
+        let isBtnScrolling = false;
+
+        function handleBtnScroll() {
             if (window.scrollY > 300) {
                 scrollToTopBtn.classList.add('visible');
             } else {
                 scrollToTopBtn.classList.remove('visible');
+            }
+            isBtnScrolling = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!isBtnScrolling) {
+                window.requestAnimationFrame(handleBtnScroll);
+                isBtnScrolling = true;
             }
         }, { passive: true });
 
