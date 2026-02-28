@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - SNISHOP.ID</title>
+    <meta name="description" content="Pertanyaan yang sering diajukan tentang layanan SNISHOP.ID.">
+
+    <link rel="shortcut icon" href="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-lg);
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            background: var(--surface);
+        }
+
+        .faq-question svg {
+            width: 24px;
+            height: 24px;
+            color: var(--text-tertiary);
+            transition: transform var(--transition-normal);
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+        }
+
+        .faq-answer-inner {
+            padding: 0 var(--space-lg) var(--space-lg);
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID">
+                    <span class="logo-text">SNISHOP</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Beranda</a>
+                    <a href="layanan.html" class="nav-link">Layanan</a>
+                    <a href="harga.html" class="nav-link">Harga</a>
+                    <a href="tentang.html" class="nav-link">Tentang</a>
+                    <a href="faq.html" class="nav-link active">FAQ</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="https://wa.me/6285185151356" class="btn btn-secondary" target="_blank">Hubungi</a>
+                    <a href="layanan.html" class="btn btn-primary">Mulai</a>
+                </div>
+                <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="section bg-surface">
+        <div class="container text-center">
+            <h1 class="fade-in">Pertanyaan yang Sering Diajukan</h1>
+            <p class="fade-in" style="max-width: 600px; margin: var(--space-md) auto 0;">
+                Temukan jawaban untuk pertanyaan umum tentang layanan kami.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-white">
+        <div class="container" style="max-width: 800px;">
+            <!-- Umum -->
+            <h2 class="fade-in" style="margin-bottom: var(--space-lg);">Pertanyaan Umum</h2>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apa itu SNISHOP.ID?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>SNISHOP.ID adalah platform SaaS terintegrasi yang menyediakan berbagai layanan digital
+                            termasuk layanan edukasi (cek Turnitin, parafrase), aplikasi premium (ChatGPT, Canva, Zoom),
+                            IT services (web development, hosting), PPOB, dan topup game.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Bagaimana cara memesan layanan?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Anda dapat memesan layanan dengan menghubungi kami melalui WhatsApp di nomor +62
+                            851-8515-1356. Tim kami akan membantu proses pemesanan hingga selesai.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Metode pembayaran apa saja yang tersedia?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Kami menerima berbagai metode pembayaran termasuk transfer bank (BCA, BNI, BRI, Mandiri),
+                            e-wallet (OVO, GoPay, Dana, ShopeePay), dan QRIS.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apakah data saya aman?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Ya, kami sangat menjaga keamanan dan kerahasiaan data pelanggan. Semua data dienkripsi dan
+                            tidak akan dibagikan kepada pihak ketiga tanpa persetujuan Anda.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layanan Edukasi -->
+            <h2 class="fade-in" style="margin: var(--space-2xl) 0 var(--space-lg);">Layanan Edukasi</h2>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Berapa lama proses cek Turnitin?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Proses cek Turnitin biasanya memakan waktu 5-30 menit tergantung jumlah halaman dokumen.
+                            Untuk dokumen dengan halaman banyak, maksimal 1 jam.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apakah laporan Turnitin lengkap?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Ya, Anda akan mendapatkan laporan lengkap dalam format PDF yang mencakup persentase
+                            similarity, sumber yang terdeteksi, dan highlight bagian yang terindikasi plagiarisme.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aplikasi Premium -->
+            <h2 class="fade-in" style="margin: var(--space-2xl) 0 var(--space-lg);">Aplikasi Premium</h2>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apa itu akun shared?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Akun shared adalah akun premium yang digunakan bersama dengan pengguna lain. Anda tetap bisa
+                            mengakses semua fitur premium dengan harga yang lebih terjangkau.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Bagaimana cara aktivasi aplikasi?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Setelah pembayaran dikonfirmasi, kami akan mengirimkan panduan aktivasi beserta kredensial
+                            akun melalui WhatsApp. Tim kami siap membantu jika ada kendala.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-in">
+                <div class="faq-question">
+                    <span>Apakah ada garansi?</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        <p>Ya, semua layanan kami bergaransi. Jika ada masalah dengan akun atau layanan, kami akan
+                            mengganti atau memperbaiki tanpa biaya tambahan selama masa aktif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="section bg-surface">
+        <div class="container text-center">
+            <h2 class="fade-in">Masih Ada Pertanyaan?</h2>
+            <p class="fade-in" style="max-width: 500px; margin: var(--space-md) auto var(--space-xl);">
+                Tim customer service kami siap membantu Anda 24/7.
+            </p>
+            <a href="https://wa.me/6285185151356?text=Halo%20SNISHOP.ID,%20saya%20ingin%20bertanya"
+                class="btn btn-primary btn-lg fade-in" target="_blank">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID">
+                        <span class="logo-text">SNISHOP</span>
+                    </a>
+                    <p>Platform SaaS terintegrasi untuk semua kebutuhan digital Anda.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Layanan</h4>
+                    <div class="footer-links">
+                        <a href="layanan.html">Semua Layanan</a>
+                        <a href="harga.html">Harga</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Perusahaan</h4>
+                    <div class="footer-links">
+                        <a href="tentang.html">Tentang</a>
+                        <a href="faq.html">FAQ</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Kontak</h4>
+                    <div class="footer-links">
+                        <a href="mailto:snishopsolusinetwork@gmail.com">📧 Email</a>
+                        <a href="https://wa.me/6285185151356" target="_blank">📱 +62 851-8515-1356</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SNISHOP.ID. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6285185151356" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

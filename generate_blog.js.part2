@@ -1,0 +1,334 @@
+
+// --- HELPER FUNCTIONS ---
+
+// 1. Generate Schema JSON-LD
+const generateSchema = (service) => {
+    let schema = {};
+
+    if (service.schemaType === 'SoftwareApplication') {
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": service.name,
+            "operatingSystem": "Web, Android, iOS",
+            "applicationCategory": service.category,
+            "offers": {
+                "@type": "Offer",
+                "price": service.price || "0",
+                "priceCurrency": "IDR"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "1250"
+            },
+            "description": service.shortDesc,
+            "author": {
+                "@type": "Organization",
+                "name": "SNISHOP.ID",
+                "url": "https://snishop.id"
+            }
+        };
+    } else if (service.schemaType === 'Service') {
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": service.name,
+            "serviceType": service.category,
+            "provider": {
+                "@type": "Organization",
+                "name": "SNISHOP.ID",
+                "url": "https://snishop.id"
+            },
+            "description": service.shortDesc,
+            "offers": {
+                "@type": "Offer",
+                "price": service.price || "0",
+                "priceCurrency": "IDR"
+            }
+        };
+    } else {
+        // Default Article Schema
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": service.name,
+            "image": service.image,
+            "author": {
+                "@type": "Organization",
+                "name": "SNISHOP.ID"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "SNISHOP.ID",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://i.ibb.co.com/MGVPZtv/20230722-162429.png"
+                }
+            },
+            "datePublished": new Date().toISOString(),
+            "description": service.shortDesc
+        };
+    }
+
+    return JSON.stringify(schema, null, 2);
+};
+
+// 2. Generate Related Articles
+const generateRelatedArticles = (currentService, allServices) => {
+    // Filter services in the same category, excluding current
+    const related = allServices.filter(s => 
+        (s.category === currentService.category || s.parentService === currentService.slug) && 
+        s.slug !== currentService.slug
+    ).slice(0, 3); // Max 3 articles
+
+    if (related.length === 0) return '';
+
+    const listItems = related.map(s => `
+        <li>
+            <a href="${s.slug}.html" class="related-link">
+                <strong>${s.name}</strong><br>
+                <span style="font-size: 0.9em; color: #666;">${s.shortDesc}</span>
+            </a>
+        </li>
+    `).join('');
+
+    return `
+        <div class="related-articles-box" style="margin-top: 40px; background: #f8f9fa; padding: 25px; border-radius: 12px; border-left: 4px solid var(--primary-color);">
+            <h3 style="margin-top: 0; margin-bottom: 15px;">Pelajari Juga:</h3>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                ${listItems}
+            </ul>
+        </div>
+    `;
+};
+
+// --- HTML TEMPLATE GENERATOR ---
+const generateHTML = (service, allServices) => {
+    const schemaJson = generateSchema(service);
+    const relatedHtml = generateRelatedArticles(service, allServices);
+    const ctaLinkPrimary = service.ctaLink || "https://wa.me/6285185151356";
+    const ctaTextPrimary = service.ctaText || "Hubungi Kami";
+
+    return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${service.name} - Review & Fitur Lengkap 2026 | SNISHOP.ID Blog</title>
+    <meta name="description" content="Review lengkap ${service.name}: ${service.shortDesc} Pelajari fitur, manfaat, dan cara menggunakannya untuk bisnis Anda.">
+    <meta name="keywords" content="${service.keywords || ''}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="${service.name} - SNISHOP.ID">
+    <meta property="og:description" content="${service.shortDesc}">
+    <meta property="og:image" content="${service.image}">
+    <meta property="og:type" content="article">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    ${schemaJson}
+    </script>
+    
+    <style>
+        .article-header { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 60px 0 40px; text-align: center; border-bottom: 1px solid #dee2e6; }
+        .article-container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .article-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .content h2 { margin-top: 40px; margin-bottom: 20px; color: var(--text-primary); font-size: 1.8rem; }
+        .content p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+        .content ul { list-style: none; padding: 0; margin-bottom: 30px; }
+        .content ul li { padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: start; gap: 10px; font-size: 1.05rem; }
+        .content ul li::before { content: '✅'; font-size: 1.2rem; }
+        .cta-box { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 40px; border-radius: 20px; text-align: center; margin-top: 60px; box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2); }
+        .cta-box h3 { color: white; margin-bottom: 15px; font-size: 2rem; }
+        .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 30px; font-size: 1.2rem; }
+        .btn-light { background: white; color: var(--primary-color); border: none; font-weight: 700; padding: 15px 40px; font-size: 1.1rem; border-radius: 50px; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-light:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .related-link { display: block; padding: 10px; border-radius: 8px; text-decoration: none; color: var(--primary-color); transition: background 0.2s; }
+        .related-link:hover { background: rgba(37, 99, 235, 0.05); }
+        
+        /* Table Styling */
+        .feature-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .feature-table th, .feature-table td { padding: 15px 20px; text-align: left; border-bottom: 1px solid #eee; }
+        .feature-table th { background: #f8f9fa; color: var(--text-primary); font-weight: 700; }
+        .feature-table tr:last-child td { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo"><img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID"></a>
+                <nav class="nav">
+                    <a href="../index.html" class="nav-link">Beranda</a>
+                    <a href="index.html" class="nav-link active">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <header class="article-header">
+        <div class="container">
+            <span class="badge" style="background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; display: inline-block;">${service.category}</span>
+            <h1 style="max-width: 800px; margin: 0 auto; line-height: 1.3;">${service.name}</h1>
+            <p style="margin-top: 15px; opacity: 0.7;">Dipublikasikan oleh Tim SNISHOP.ID Editorial</p>
+        </div>
+    </header>
+
+    <div class="article-container content">
+        <img src="${service.image}" alt="${service.name}" class="article-img" onerror="this.src='https://i.ibb.co.com/MGVPZtv/20230722-162429.png'">
+
+        <p class="lead" style="font-size: 1.35rem; font-weight: 500; color: var(--text-primary); margin-bottom: 40px;">${service.intro}</p>
+
+        <!-- Dynamic Related Articles (Top) -->
+        ${relatedHtml}
+
+        <h2 id="masalah">Mengapa Anda Butuh Solusi Ini?</h2>
+        <p>${service.problem}</p>
+
+        <h2 id="solusi">Solusi: ${service.name}</h2>
+        <p>${service.solution} Dengan teknologi berbasis cloud yang aman dan user-friendly, aplikasi ini dirancang untuk memudahkan operasional bisnis Anda dari mana saja.</p>
+
+        <h2 id="fitur">Fitur Unggulan</h2>
+        <ul>
+            ${service.features.map(f => `<li><strong>${f}</strong></li>`).join('')}
+        </ul>
+
+        <div class="info-box" style="background: #eef2ff; padding: 25px; border-radius: 12px; border: 1px solid #dbeafe; margin: 30px 0;">
+            <h3 style="margin-top:0; font-size: 1.4rem; color: var(--primary-color);"><i class="fas fa-info-circle"></i> Harga & Penawaran</h3>
+            <p style="margin-bottom: 0;">Layanan ini tersedia dengan harga: <strong>${service.price === "0" ? "GRATIS (Versi Dasar)" : "Mulai Rp " + parseInt(service.price).toLocaleString('id-ID')}</strong>. Dapatkan akses penuh sekarang juga.</p>
+        </div>
+
+        <h2 id="kesimpulan">Kesimpulan</h2>
+        <p>Jika Anda mencari solusi <strong>${service.keywords.split(',')[0]}</strong> yang handal, <strong>${service.name}</strong> adalah investasi terbaik untuk masa depan bisnis Anda.</p>
+
+        <!-- CTA Section -->
+        <div class="cta-box">
+            <h3>Siap Menggunakan ${service.name}?</h3>
+            <p>Klik tombol di bawah untuk mencoba atau konsultasi gratis.</p>
+            <a href="${ctaLinkPrimary}" class="btn btn-light btn-lg" target="_blank">${ctaTextPrimary} <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <!-- Bottom Related Articles (Recap) -->
+        ${relatedHtml ? '<hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">' + relatedHtml.replace('margin-top: 40px', 'margin-top: 0') : ''}
+
+    </div>
+
+    <!-- FAQ Logic Placeholder -->
+    <!-- Ideally added dynamically if data exists -->
+
+    <footer class="footer bg-dark-blue text-white" style="padding: 60px 0; text-align: center; margin-top: 60px;">
+        <div class="container">
+            <div style="margin-bottom: 30px;">
+                <a href="../index.html" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.5rem;">SNISHOP.ID</a>
+                <p style="opacity: 0.7; margin-top: 10px;">Platform Digital Terpercaya untuk Bisnis Anda</p>
+            </div>
+            <p>&copy; 2026 SNISHOP.ID. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>`;
+};
+
+// --- INDEX PAGE GENERATOR ---
+const generateIndexHTML = (services) => {
+    // Generate cards with category labels
+    const cards = services.map(service => `
+            <!-- ${service.name} -->
+            <div class="article-card fade-in">
+                <div class="article-img">
+                    <img src="${service.image}" alt="${service.name}" onerror="this.src='https://i.ibb.co.com/MGVPZtv/20230722-162429.png'">
+                </div>
+                <div class="article-content">
+                    <span class="article-tag">${service.category}</span>
+                    <h3 class="article-title"><a href="${service.slug}.html">${service.name}</a></h3>
+                    <p class="article-excerpt">${service.shortDesc}</p>
+                    <a href="${service.slug}.html" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>`).join('');
+
+    return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Artikel - SNISHOP.ID Ecosystem</title>
+    <meta name="description" content="Kumpulan artikel mendalam tentang ekosistem SNISHOP.ID, mulai dari ERP, Kasir, Absensi, hingga layanan digital AI.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 120px 0 60px; text-align: center; }
+        .blog-grid { margin-top: -50px; margin-bottom: 80px; }
+        .article-card { background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; }
+        .article-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .article-img { height: 200px; overflow: hidden; background: #f0f2f5; display: flex; align-items: center; justify-content: center; }
+        .article-img img { width: 100%; height: 100%; object-fit: cover; }
+        .article-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+        .article-tag { display: inline-block; padding: 4px 12px; background: var(--bg-surface); color: var(--primary-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; }
+        .article-title { font-size: 1.25rem; margin-bottom: 12px; line-height: 1.4; }
+        .article-title a { color: var(--text-primary); text-decoration: none; }
+        .article-excerpt { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+        .read-more { color: var(--primary-color); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo"><img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID"></a>
+                <nav class="nav">
+                    <a href="../index.html" class="nav-link">Kembali ke Beranda</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="blog-header">
+        <div class="container">
+            <h1 class="fade-in">Pusat Informasi & Edukasi</h1>
+            <p class="fade-in" style="opacity: 0.9;">Pelajari cara memaksimalkan bisnis Anda dengan ekosistem digital SNISHOP.ID</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="grid grid-3 blog-grid">
+            ${cards}
+        </div>
+    </div>
+    <div class="container mb-5 text-center">
+         <h3>Belum menemukan yang Anda cari?</h3>
+         <a href="https://wa.me/6285185151356" class="btn btn-primary mt-3">Hubungi Tim Support Kami</a>
+    </div>
+    <footer class="footer bg-dark-blue text-white" style="padding: 40px 0; text-align: center;">
+        <div class="container"><p>&copy; 2026 SNISHOP.ID. All rights reserved.</p></div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>`;
+};
+
+// --- EXECUTION ---
+const main = () => {
+    // Ensure dir exists
+    if (!fs.existsSync(BLOG_DIR)) {
+        fs.mkdirSync(BLOG_DIR);
+    }
+
+    // Generate Article Pages
+    services.forEach(service => {
+        const html = generateHTML(service, services); // Pass all services for related logic
+        fs.writeFileSync(path.join(BLOG_DIR, `${service.slug}.html`), html);
+        console.log(`Generated: ${service.slug}.html`);
+    });
+
+    // Generate Index Page
+    const indexHtml = generateIndexHTML(services);
+    fs.writeFileSync(path.join(BLOG_DIR, 'index.html'), indexHtml);
+    console.log('Generated: blog/index.html');
+};
+
+main();

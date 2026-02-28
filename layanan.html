@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - SNISHOP.ID</title>
+    <meta name="description"
+        content="Katalog lengkap layanan SNISHOP.ID: Edukasi, Aplikasi Premium, IT Services, PPOB, dan Topup Game.">
+
+    <link rel="shortcut icon" href="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Page-specific styles */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-2xl);
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 10px 24px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .category-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            font-size: 2rem;
+        }
+
+        .service-icon.edu {
+            background: #E8F0FE;
+        }
+
+        .service-icon.app {
+            background: #FEE8E8;
+        }
+
+        .service-icon.it {
+            background: #E8FEE8;
+        }
+
+        .service-icon.ppob {
+            background: #FEF7E8;
+        }
+
+        .service-icon.game {
+            background: #F3E8FE;
+        }
+
+        .service-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .service-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .service-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID">
+                    <span class="logo-text">SNISHOP</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Beranda</a>
+                    <a href="layanan.html" class="nav-link active">Layanan</a>
+                    <a href="harga.html" class="nav-link">Harga</a>
+                    <a href="tentang.html" class="nav-link">Tentang</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="https://wa.me/6285185151356" class="btn btn-secondary" target="_blank">Hubungi Sales</a>
+                    <a href="#layanan" class="btn btn-primary">Order Sekarang</a>
+                </div>
+                <button class="menu-toggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="section bg-surface">
+        <div class="container text-center">
+            <h1 class="fade-in">Katalog Layanan SNISHOP.ID</h1>
+            <p class="fade-in" style="max-width: 600px; margin: var(--space-md) auto 0;">
+                Temukan berbagai layanan digital berkualitas untuk kebutuhan personal dan bisnis Anda.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section bg-white" id="layanan">
+        <div class="container">
+            <!-- Category Filter -->
+            <div class="category-nav">
+                <button class="category-btn active" data-category="all">Semua</button>
+                <button class="category-btn" data-category="edukasi">Edukasi</button>
+                <button class="category-btn" data-category="aplikasi">Aplikasi Premium</button>
+                <button class="category-btn" data-category="it">IT Services</button>
+                <button class="category-btn" data-category="ppob">PPOB</button>
+                <button class="category-btn" data-category="game">Topup Game</button>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid stagger" id="edukasi">
+                <!-- Edukasi -->
+                <div class="service-card fade-in" data-category="edukasi">
+                    <div class="service-icon edu">📚</div>
+                    <h3 class="service-title">Cek Turnitin Basic</h3>
+                    <div class="service-price">Mulai Rp 9.000</div>
+                    <p class="service-desc">Cek plagiarisme dengan Turnitin. 1x Rp9k | 3x Rp17k | 6x Rp49k | 10x Rp81k
+                    </p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20order%20Cek%20Turnitin%20Basic"
+                        class="btn btn-primary btn-sm" target="_blank">Order Sekarang</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="edukasi">
+                    <div class="service-icon edu">🤖</div>
+                    <h3 class="service-title">Cek Turnitin AI</h3>
+                    <div class="service-price">Mulai Rp 35.000</div>
+                    <p class="service-desc">Cek AI Detection Turnitin. 1x Rp35k | 3x Rp90k | 6x Rp190k | 10x Rp330k</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20order%20Cek%20Turnitin%20AI"
+                        class="btn btn-primary btn-sm" target="_blank">Order Sekarang</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="edukasi">
+                    <div class="service-icon edu">🔍</div>
+                    <h3 class="service-title">Cek AI GPT Zero</h3>
+                    <div class="service-price">Mulai Rp 15.000</div>
+                    <p class="service-desc">Cek AI dengan GPTZero. 1x Rp15k | 3x Rp35k | 6x Rp65k | 10x Rp120k</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20order%20Cek%20AI%20GPT%20Zero"
+                        class="btn btn-primary btn-sm" target="_blank">Order Sekarang</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="edukasi">
+                    <div class="service-icon edu">✍️</div>
+                    <h3 class="service-title">Parafrase Manual</h3>
+                    <div class="service-price">Rp 15.000/halaman</div>
+                    <p class="service-desc">Jasa parafrase manual oleh tim profesional untuk menghindari plagiarisme.
+                    </p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20order%20Parafrase%20Manual"
+                        class="btn btn-primary btn-sm" target="_blank">Order Sekarang</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="edukasi">
+                    <div class="service-icon edu">🎓</div>
+                    <h3 class="service-title">Konsultasi Akademik</h3>
+                    <div class="service-price">Rp 25.000/sesi</div>
+                    <p class="service-desc">Bimbingan skripsi, tesis, dan konsultasi akademik dengan pakar.</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Konsultasi%20Akademik"
+                        class="btn btn-primary btn-sm" target="_blank">Konsultasi</a>
+                </div>
+
+                <!-- Aplikasi Premium -->
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">🤖</div>
+                    <h3 class="service-title">ChatGPT Plus</h3>
+                    <div class="service-price">Rp 35.000/bulan</div>
+                    <p class="service-desc">Akses ChatGPT Plus dengan GPT-4 untuk produktivitas maksimal.</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Langganan%20ChatGPT%20Plus"
+                        class="btn btn-primary btn-sm" target="_blank">Berlangganan</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">🎨</div>
+                    <h3 class="service-title">Canva Pro</h3>
+                    <div class="service-price">Mulai Rp 2.000/jam</div>
+                    <p class="service-desc">Desain profesional dengan Canva Pro. Akses jutaan template premium.
+                        Pay-As-You-Go!</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="https://snidesain.snishop.com/" class="btn btn-primary btn-sm" target="_blank">Order di
+                            Website</a>
+                        <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Sewa%20Canva%20Pro"
+                            class="btn btn-secondary btn-sm" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">📹</div>
+                    <h3 class="service-title">Zoom Premium</h3>
+                    <div class="service-price">Sewa Per Jam/Hari</div>
+                    <p class="service-desc">Zoom Pro untuk meeting, webinar, workshop. 100-1000 peserta. Pay-As-You-Go!
+                    </p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="https://snijadwalin.snishop.com/" class="btn btn-primary btn-sm" target="_blank">Order
+                            di Website</a>
+                        <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Sewa%20Zoom%20Premium"
+                            class="btn btn-secondary btn-sm" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">🎬</div>
+                    <h3 class="service-title">Netflix Premium</h3>
+                    <div class="service-price">Mulai Rp 6.000/6 jam</div>
+                    <p class="service-desc">Streaming Netflix Premium. Private Profile hingga Family Plan.
+                        Pay-As-You-Go!</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="https://sninonton.snishop.com/" class="btn btn-primary btn-sm" target="_blank">Order di
+                            Website</a>
+                        <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Sewa%20Netflix%20Premium"
+                            class="btn btn-secondary btn-sm" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">📊</div>
+                    <h3 class="service-title">Microsoft 365</h3>
+                    <div class="service-price">Rp 50.000 Lifetime</div>
+                    <p class="service-desc">Word, Excel, PowerPoint, Outlook + OneDrive 1TB. Install di 5 device.
+                        Lifetime (maks 3 tahun). Custom nama akun!</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Langganan%20Microsoft%20365"
+                        class="btn btn-primary btn-sm" target="_blank">Order via WA</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">✂️</div>
+                    <h3 class="service-title">CapCut Pro</h3>
+                    <div class="service-price">Mulai Rp 35.000/bulan</div>
+                    <p class="service-desc">Akun resmi. 1 bln Rp35K | 3 bln Rp99K | 6 bln Rp192K | 12 bln Rp360K. Export
+                        4K tanpa watermark, 1 akun 1 device!</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Langganan%20CapCut%20Pro"
+                        class="btn btn-primary btn-sm" target="_blank">Order via WA</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="aplikasi">
+                    <div class="service-icon app">🎵</div>
+                    <h3 class="service-title">Spotify Premium</h3>
+                    <div class="service-price">Rp 15.000/bulan</div>
+                    <p class="service-desc">Streaming musik tanpa iklan, kualitas audio tinggi, download offline, skip
+                        unlimited. Support semua device!</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20Langganan%20Spotify%20Premium"
+                        class="btn btn-primary btn-sm" target="_blank">Order via WA</a>
+                </div>
+
+                <!-- IT Services -->
+                <div class="service-card fade-in" data-category="it">
+                    <div class="service-icon it">🌐</div>
+                    <h3 class="service-title">Website Development</h3>
+                    <div class="service-price">Mulai Rp 500.000</div>
+                    <p class="service-desc">Pembuatan website custom: Company Profile, Landing Page, E-Commerce, Blog.
+                        Design responsive, SEO-friendly, free domain + hosting 1 tahun!</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20ingin%20konsultasi%20pembuatan%20website"
+                        class="btn btn-primary btn-sm" target="_blank">Konsultasi Gratis</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="it">
+                    <div class="service-icon it">🖥️</div>
+                    <h3 class="service-title">Web Hosting</h3>
+                    <div class="service-price">Rp 50.000/tahun</div>
+                    <p class="service-desc">Hosting SSD super cepat. Uptime 99.9%, SSL gratis, cPanel, Auto backup
+                        daily, unlimited bandwidth. Support 24/7!</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20order%20Web%20Hosting"
+                        class="btn btn-primary btn-sm" target="_blank">Order via WA</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="it">
+                    <div class="service-icon it">🔗</div>
+                    <h3 class="service-title">Domain</h3>
+                    <div class="service-price">Mulai Rp 100.000/tahun</div>
+                    <p class="service-desc">Registrasi domain .com, .net, .org, .id, .co.id, .my.id. Termasuk DNS
+                        management, email forwarding, WHOIS privacy protection!</p>
+                    <a href="https://wa.me/6285185151356?text=Halo,%20saya%20mau%20order%20Domain"
+                        class="btn btn-primary btn-sm" target="_blank">Cek Ketersediaan</a>
+                </div>
+
+                <!-- PPOB -->
+                <div class="service-card fade-in" data-category="ppob">
+                    <div class="service-icon ppob">📱</div>
+                    <h3 class="service-title">Pulsa & Paket Data</h3>
+                    <div class="service-price">Harga Kompetitif</div>
+                    <p class="service-desc">Isi pulsa semua operator (Telkomsel, XL, Indosat, Tri, Smartfren). Paket
+                        data internet harian, mingguan & bulanan. Proses otomatis 24 jam.</p>
+                    <a href="https://buylink.id/snishop.id" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="ppob">
+                    <div class="service-icon ppob">⚡</div>
+                    <h3 class="service-title">Token PLN & Tagihan Listrik</h3>
+                    <div class="service-price">Admin Rp 1.500 - 2.500</div>
+                    <p class="service-desc">Beli token listrik PLN Prabayar (20rb-1jt) atau bayar tagihan PLN
+                        Pascabayar. Proses instan, struk resmi, admin rendah.</p>
+                    <a href="https://buylink.id/snishop.id" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="ppob">
+                    <div class="service-icon ppob">🏥</div>
+                    <h3 class="service-title">BPJS Kesehatan</h3>
+                    <div class="service-price">Admin Rp 2.500</div>
+                    <p class="service-desc">Bayar iuran BPJS Kesehatan untuk 1-12 bulan. Termasuk cek tagihan, proses
+                        cepat, konfirmasi langsung via WA.</p>
+                    <a href="https://buylink.id/snishop.id" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="ppob">
+                    <div class="service-icon ppob">💧</div>
+                    <h3 class="service-title">PDAM & Tagihan Air</h3>
+                    <div class="service-price">Admin Rp 2.500</div>
+                    <p class="service-desc">Bayar tagihan PDAM seluruh Indonesia. Cek tagihan, proses pembayaran cepat,
+                        struk digital tersedia.</p>
+                    <a href="https://buylink.id/snishop.id" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="ppob">
+                    <div class="service-icon ppob">📺</div>
+                    <h3 class="service-title">TV Berlangganan</h3>
+                    <div class="service-price">Sesuai Tagihan</div>
+                    <p class="service-desc">Bayar tagihan Indihome, MNC Vision, Transvision, K-Vision, dan TV kabel
+                        lainnya. Proses aman dan cepat.</p>
+                    <a href="https://buylink.id/snishop.id" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="ppob">
+                    <div class="service-icon ppob">🌐</div>
+                    <h3 class="service-title">Internet & Wifi</h3>
+                    <div class="service-price">Sesuai Tagihan</div>
+                    <p class="service-desc">Bayar tagihan internet Indihome, Biznet, MyRepublic, First Media, dan
+                        provider lainnya. Langsung teraktivasi.</p>
+                    <a href="https://buylink.id/snishop.id" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <!-- Game -->
+                <div class="service-card fade-in" data-category="game">
+                    <div class="service-icon game">🎮</div>
+                    <h3 class="service-title">Mobile Legends</h3>
+                    <div class="service-price">Mulai Rp 1.579</div>
+                    <p class="service-desc">Top up Diamond ML Bang Bang. Pilihan 5-7000+ Diamond. Proses instan, masuk
+                        langsung ke akun. Legal & aman!</p>
+                    <a href="https://www.snishopgame.biz.id/" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="game">
+                    <div class="service-icon game">🔥</div>
+                    <h3 class="service-title">Free Fire</h3>
+                    <div class="service-price">Mulai Rp 1.579</div>
+                    <p class="service-desc">Top up Diamond Free Fire MAX. Pilihan 5-10000+ Diamond. Bonus diamond,
+                        proses cepat & aman!</p>
+                    <a href="https://www.snishopgame.biz.id/" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="game">
+                    <div class="service-icon game">🎯</div>
+                    <h3 class="service-title">PUBG Mobile</h3>
+                    <div class="service-price">Mulai Rp 15.000</div>
+                    <p class="service-desc">Top up UC PUBG Mobile & PUBG New State. Pilihan 60-8100 UC. Masuk instan ke
+                        akun game Anda!</p>
+                    <a href="https://www.snishopgame.biz.id/" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="game">
+                    <div class="service-icon game">⭐</div>
+                    <h3 class="service-title">Genshin Impact</h3>
+                    <div class="service-price">Mulai Rp 16.000</div>
+                    <p class="service-desc">Top up Genesis Crystal & Blessing Moon. Server Asia/America/Europe. Proses
+                        via UID, aman & terpercaya!</p>
+                    <a href="https://www.snishopgame.biz.id/" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="game">
+                    <div class="service-icon game">🎲</div>
+                    <h3 class="service-title">Valorant</h3>
+                    <div class="service-price">Mulai Rp 15.000</div>
+                    <p class="service-desc">Top up VP (Valorant Points). Pilihan 125-9650 VP. Bonus event, proses via
+                        Riot ID cepat & aman!</p>
+                    <a href="https://www.snishopgame.biz.id/" class="btn btn-primary btn-sm" target="_blank">Order di
+                        Website</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="game">
+                    <div class="service-icon game">🎮</div>
+                    <h3 class="service-title">100+ Game Lainnya</h3>
+                    <div class="service-price">Harga Terjangkau</div>
+                    <p class="service-desc">Honkai, COD Mobile, Arena of Valor, Steam Wallet, PlayStation, Xbox,
+                        Nintendo & ratusan game lainnya tersedia!</p>
+                    <a href="https://www.snishopgame.biz.id/" class="btn btn-primary btn-sm" target="_blank">Lihat Semua
+                        Game</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section bg-primary" style="color: white;">
+        <div class="container text-center">
+            <h2 style="color: white;">Tidak Menemukan yang Dicari?</h2>
+            <p style="color: rgba(255,255,255,0.9); max-width: 500px; margin: var(--space-md) auto var(--space-xl);">
+                Hubungi kami untuk layanan custom sesuai kebutuhan Anda.
+            </p>
+            <a href="https://wa.me/6285185151356?text=Halo%20SNISHOP.ID,%20saya%20membutuhkan%20layanan%20khusus"
+                class="btn btn-lg" style="background: white; color: var(--primary);" target="_blank">Hubungi Kami</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID">
+                        <span class="logo-text">SNISHOP</span>
+                    </a>
+                    <p>Platform SaaS terintegrasi untuk semua kebutuhan digital Anda.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Layanan</h4>
+                    <div class="footer-links">
+                        <a href="#edukasi">Edukasi</a>
+                        <a href="#aplikasi">Aplikasi Premium</a>
+                        <a href="#it">IT Services</a>
+                        <a href="#ppob">PPOB</a>
+                        <a href="#game">Topup Game</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Perusahaan</h4>
+                    <div class="footer-links">
+                        <a href="tentang.html">Tentang Kami</a>
+                        <a href="harga.html">Harga</a>
+                        <a href="faq.html">FAQ</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Kontak</h4>
+                    <div class="footer-links">
+                        <a href="mailto:snishopsolusinetwork@gmail.com">📧 Email</a>
+                        <a href="https://wa.me/6285185151356" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SNISHOP.ID. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/6285185151356" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
