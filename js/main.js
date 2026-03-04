@@ -868,4 +868,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     initInfiniteCarousel();
 
+    // === Testimonial Slider ===
+    const testimonialTrack = document.getElementById('testimonialTrack');
+    const prevTestiBtn = document.querySelector('.testimonial-section .prev-btn');
+    const nextTestiBtn = document.querySelector('.testimonial-section .next-btn');
+
+    if (testimonialTrack && prevTestiBtn && nextTestiBtn) {
+        let isScrollingTesti = false; // Debounce
+        
+        const scrollAmount = () => {
+            const card = testimonialTrack.querySelector('.testimonial-card');
+            // Card width + gap (24px = var(--space-lg))
+            return card ? card.offsetWidth + 24 : 0;
+        };
+
+        prevTestiBtn.addEventListener('click', () => {
+            if (isScrollingTesti) return;
+            isScrollingTesti = true;
+            testimonialTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+            // Release lock after smooth scroll duration (~500ms)
+            setTimeout(() => isScrollingTesti = false, 500);
+        });
+
+        nextTestiBtn.addEventListener('click', () => {
+            if (isScrollingTesti) return;
+            isScrollingTesti = true;
+            testimonialTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+            setTimeout(() => isScrollingTesti = false, 500);
+        });
+    }
+
 });
