@@ -72,13 +72,14 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
     scroll-behavior: smooth;
     font-size: 16px;
-    overflow-x: hidden; /* THE 320px LAW: Anti-Overflow Guarantee */
 }
 
 body {
+    overflow-x: clip; /* THE 320px LAW: Use clip perfectly to prevent horizontal scroll WITHOUT breaking position: sticky */
+
     font-family: var(--font-primary);
     color: var(--text-primary);
     background-color: var(--white);
@@ -2856,9 +2857,15 @@ p {
         overflow: hidden;
     }
 
-    /* Hide features list on mobile to reduce card height */
+    /* Show features list on mobile */
     .stacking-card-features {
-        display: none;
+        display: block;
+        font-size: 0.85rem;
+        margin-bottom: var(--space-md);
+    }
+    
+    .stacking-card-features li {
+        margin-bottom: 4px;
     }
 
     .stacking-card-pricing-panel {
