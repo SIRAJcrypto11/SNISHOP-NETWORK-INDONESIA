@@ -72,9 +72,10 @@
     box-sizing: border-box;
 }
 
-html {
+html, body {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden; /* THE 320px LAW: Anti-Overflow Guarantee */
 }
 
 body {
@@ -144,6 +145,7 @@ h6 {
 p {
     color: var(--text-secondary);
     margin-bottom: var(--space-md);
+    word-break: break-word; /* Prevent long words/URLs from breaking the layout */
 }
 
 .text-center {
@@ -250,6 +252,29 @@ p {
     }
 }
 
+/* 480px MOBILE COMPACT MODE (Ruang Nafas iPhone SE) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--space-md); /* Reduce container padding from 24px to 16px */
+    }
+
+    .section {
+        padding: var(--space-xl) 0; /* Reduce section padding dramatically */
+    }
+
+    .section-sm {
+        padding: var(--space-lg) 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
 /* === BUTTONS === */
 .btn {
     display: inline-flex;
@@ -321,6 +346,23 @@ p {
 }
 
 /* === CARDS === */
+@media (max-width: 480px) {
+    .btn {
+        width: 100%;
+        margin-bottom: var(--space-sm);
+        margin-left: 0 !important; /* Reset margin for stacked buttons */
+        justify-content: center;
+    }
+    
+    /* Ensure flex containers wrap their full-width buttons gracefully */
+    .hero-content > div,
+    .section.bg-primary .container > div:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}
 .card {
     background: var(--white);
     border-radius: var(--radius-md);
@@ -1152,7 +1194,24 @@ p {
 @media (max-width: 768px) {
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
     }
+
+/* 480px MOBILE COMPACT MODE FOR FOOTER */
+@media (max-width: 480px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-links li a {
+        padding: var(--space-xs) 0;
+        display: block;
+    }
+    .footer-copyright {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+}
 
     .footer-bottom {
         flex-direction: column;
