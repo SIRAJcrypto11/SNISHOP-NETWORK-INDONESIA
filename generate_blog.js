@@ -190,7 +190,7 @@ const services = [
             "Bisa Cek Berulang-ulang",
             "Support 24 Jam"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Halo%20Admin,%20saya%20mau%20cek%20Turnitin",
+        ctaLink: "https://jasacekplagiat.snishop.com/",
         ctaText: "Cek Plagiasi Sekarang",
         keywords: "jasa cek turnitin murah, cek plagiasi no repository, cara lolos turnitin, cek turnitin 24 jam",
         schemaType: "Service",

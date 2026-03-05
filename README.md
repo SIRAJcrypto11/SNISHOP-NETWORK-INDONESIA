@@ -22,7 +22,7 @@ Website landing page ini dibangun dengan fokus pada performa maksimal, SEO yang 
 ## 📦 Ekosistem Aplikasi SNISHOP
 Website ini menghubungkan pengguna ke berbagai Web App yang telah kami bangun:
 1. **[SNISHOP ERP](https://snishop.base44.app/)** - Kelola bisnis dengan sistem terintegrasi (Kasir, Absensi, Gudang).
-2. **[SNICEKPLAGIASI](https://snicekplagiasi.base44.app/)** - Cek Turnitin No Repository Akurat.
+2. **[JASACEKPLAGIAT](https://jasacekplagiat.snishop.com/)** - Cek Turnitin No Repository Akurat.
 3. **[TODOIT](https://todoit.snishop.com/)** - Finance manager & AI budgeting assistant.
 4. **[BudgyAI](https://budgyai.vercel.app/)** - Perencanaan anggaran cerdas dengan AI.
 5. **[FormEase](https://app--form-ease-d76c872b.base44.app)** - Pembuatan formulir profesional Instan.
