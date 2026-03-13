@@ -167,7 +167,7 @@ const services = [
             "Gamification (Level & Badges)",
             "Voice Input"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Info%20Todoit%20AI",
+        ctaLink: "https://todoit.snishop.com/",
         ctaText: "Coba Todoit AI",
         keywords: "aplikasi to do list ai, manajemen tugas otomatis, asisten pribadi virtual",
         schemaType: "SoftwareApplication",
@@ -213,7 +213,7 @@ const services = [
             "Laporan Keuangan Bulanan",
             "Multi-Wallet Support"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Info%20BudgyAI",
+        ctaLink: "https://budgyai.snishop.com/",
         ctaText: "Download BudgyAI",
         keywords: "aplikasi pengatur keuangan, cara mengatur gaji, aplikasi catat pengeluaran, money manager ai",
         schemaType: "SoftwareApplication",
@@ -282,7 +282,7 @@ const services = [
             "Generator Ringkasan Materi",
             "Quiz & Latihan Soal"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Info%20StudeeAI",
+        ctaLink: "https://jasacekplagiat.snishop.com/",
         ctaText: "Mulai Belajar",
         keywords: "aplikasi belajar ai, jawaban soal matematika, tutor online gratis, bantuan pr sekolah",
         schemaType: "SoftwareApplication",
@@ -305,7 +305,7 @@ const services = [
             "Highlight Poin Penting",
             "Unlimited Duration"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Info%20VoiceScribe",
+        ctaLink: "https://jasacekplagiat.snishop.com/",
         ctaText: "Transkrip Sekarang",
         keywords: "aplikasi transkrip suara ke teks, cara notulen rapat otomatis, speech to text indonesia",
         schemaType: "SoftwareApplication",
@@ -420,7 +420,7 @@ const services = [
             "Materi SD-SMA",
             "Mode Offline"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Info%20TeamMath",
+        ctaLink: "https://jasacekplagiat.snishop.com/",
         ctaText: "Main Sekarang",
         keywords: "game matematika anak, aplikasi belajar math seru, lomba matematika online",
         schemaType: "SoftwareApplication",
@@ -535,7 +535,7 @@ const services = [
             "Custom Booking Form",
             "Zoom Integration"
         ],
-        ctaLink: "https://wa.me/6285185151356?text=Info%20Snijadwalin",
+        ctaLink: "https://jasacekplagiat.snishop.com/",
         ctaText: "Buat Jadwal",
         keywords: "aplikasi booking online, sistem reservasi barbershop, jadwal temu dokter",
         schemaType: "SoftwareApplication",
