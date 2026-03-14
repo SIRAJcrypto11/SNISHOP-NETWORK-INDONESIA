@@ -1023,7 +1023,152 @@ p {
     }
 }
 
+
+/* === RECRUITMENT SECTION === */
+.recruitment-section {
+    padding: var(--space-5xl) 0;
+    background: #f8fbff;
+    position: relative;
+    overflow: hidden;
+}
+
+.recruitment-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4xl);
+}
+
+.recruitment-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.recruitment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(26, 115, 232, 0.1);
+    color: var(--google-blue);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.813rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-lg);
+}
+
+.recruitment-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--google-blue);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.recruitment-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--google-grey-900);
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+}
+
+.recruitment-title span {
+    color: #5d5dff;
+}
+
+.recruitment-description {
+    font-size: 1.125rem;
+    color: var(--google-grey-700);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+    max-width: 600px;
+}
+
+.recruitment-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual-backdrop {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(93, 93, 255, 0.05) 0%, rgba(93, 93, 255, 0) 70%);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.commission-floating-card {
+    background: white;
+    padding: var(--space-xl);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.card-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--google-grey-500);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--google-grey-900);
+    display: block;
+}
+
+.card-note {
+    font-size: 0.75rem;
+    color: var(--google-grey-600);
+    margin-top: 4px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@media (max-width: 992px) {
+    .recruitment-container {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-3xl);
+    }
+    .recruitment-description {
+        margin: 0 auto var(--space-xl);
+    }
+    .visual-backdrop {
+        width: 300px;
+        height: 300px;
+    }
+}
+
 /* === MEMBERSHIP SECTION === */
+
 .membership-section {
     background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
     color: var(--white);
