@@ -1026,16 +1026,13 @@ p {
 
 /* === RECRUITMENT SECTION === */
 .recruitment-section {
-    padding: var(--space-5xl) 0;
+    padding: var(--space-6xl) 0;
     background: #f8fbff;
     position: relative;
     overflow: hidden;
 }
 
 .recruitment-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--space-lg);
     display: flex;
     align-items: center;
     gap: var(--space-4xl);
@@ -1108,13 +1105,14 @@ p {
 
 .commission-floating-card {
     background: white;
-    padding: var(--space-xl);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    padding: var(--space-2xl);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
     z-index: 3;
     animation: float 6s ease-in-out infinite;
+    max-width: 320px;
 }
 
 .card-label {
@@ -1156,7 +1154,7 @@ p {
     .recruitment-container {
         flex-direction: column;
         text-align: center;
-        gap: var(--space-3xl);
+        gap: var(--space-4xl);
     }
     .recruitment-description {
         margin: 0 auto var(--space-xl);
