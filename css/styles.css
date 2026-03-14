@@ -1023,6 +1023,118 @@ p {
     }
 }
 
+/* === MEMBERSHIP SECTION === */
+.membership-section {
+    background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+    color: var(--white);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.membership-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png');
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.membership-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.membership-title {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.membership-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-2xl);
+}
+
+.membership-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
+    text-align: left;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform var(--transition-normal);
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.benefit-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+    display: block;
+}
+
+.benefit-title {
+    color: var(--white);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.benefit-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.membership-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.membership-actions .btn-white {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.membership-actions .btn-white:hover {
+    background: var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+    .membership-title {
+        font-size: 2rem;
+    }
+    
+    .membership-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .membership-actions {
+        flex-direction: column;
+    }
+}
+
 /* === FOOTER === */
 .footer {
     background: var(--surface);
@@ -4179,7 +4291,6 @@ p {
     .stacking-card:nth-child(10) {
         top: 260px !important;
     }
-}
 
 }
 
