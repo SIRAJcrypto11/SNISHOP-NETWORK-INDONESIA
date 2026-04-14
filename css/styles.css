@@ -2104,8 +2104,9 @@ p {
     .feature-showcase-wrapper {
         margin: 0;
         padding: var(--space-lg) 0;
-        min-height: auto;
-        overflow-x: hidden;
+        min-height: 500px; /* Ensure enough space for cards and prevent collapse */
+        overflow: hidden; /* Strict overflow control */
+        display: block !important; /* Force display */
     }
 
     .feature-showcase-grid {
@@ -2150,7 +2151,9 @@ p {
 
 @media (max-width: 768px) {
     .feature-showcase-grid {
-        grid-template-columns: 1fr;
+        /* Maintain flex behavior for carousel on mobile */
+        display: flex !important;
+        flex-wrap: nowrap !important;
     }
 
     /* Mobile App Icons - 4 per row like Google Workspace */
