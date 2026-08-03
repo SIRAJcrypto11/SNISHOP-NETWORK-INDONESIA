@@ -939,32 +939,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // === Category Nav Filter (layanan.html) ===
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const serviceCards = document.querySelectorAll('.service-card');
-    if (categoryBtns.length > 0 && serviceCards.length > 0) {
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const cat = btn.getAttribute('data-category') || 'all';
+    {
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+        if (categoryBtns.length > 0 && serviceCards.length > 0) {
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const cat = btn.getAttribute('data-category') || 'all';
 
-                serviceCards.forEach(card => {
-                    const cardCat = card.getAttribute('data-category');
-                    if (cat === 'all' || cardCat === cat) {
-                        card.style.display = '';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(8px)';
-                        setTimeout(() => {
-                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 30);
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    serviceCards.forEach(card => {
+                        const cardCat = card.getAttribute('data-category');
+                        if (cat === 'all' || cardCat === cat) {
+                            card.style.display = '';
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(8px)';
+                            setTimeout(() => {
+                                card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 30);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
                 });
             });
-        });
+        }
     }
 
 });
