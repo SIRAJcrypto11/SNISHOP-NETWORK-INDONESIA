@@ -4780,5 +4780,141 @@ p {
     border-radius: 50%;
 }
 
+/* ==========================================================================
+   SNISHOP AI-FIRST B2B & B2C ECOSYSTEM BRANDING STYLES
+   ========================================================================== */
+
+/* Badges for B2B vs B2C taxonomy */
+.badge-b2b {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(59, 130, 246, 0.2));
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: #2563eb;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+
+.badge-b2c {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(192, 132, 252, 0.18));
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #9333ea;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.1);
+}
+
+.badge-ai-core {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #ffffff;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+/* Segmented Control Tabs for B2B vs B2C */
+.b2b-b2c-tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 0 36px 0;
+    width: 100%;
+}
+
+.b2b-b2c-tabs {
+    display: inline-flex;
+    background: var(--bg-surface, #f8fafc);
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 6px;
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.b2b-b2c-tab-btn {
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary, #64748b);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.b2b-b2c-tab-btn:hover {
+    color: var(--text-primary, #0f172a);
+}
+
+.b2b-b2c-tab-btn.active {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* AI Autonomous Backbone Feature Box */
+.ai-backbone-box {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 32px;
+    color: #ffffff;
+    margin: 36px 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ai-backbone-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 12px;
+}
+
+.ai-backbone-text {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Responsive 320px Safety */
+@media (max-width: 480px) {
+    .b2b-b2c-tabs {
+        padding: 4px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .b2b-b2c-tab-btn {
+        padding: 8px 14px;
+        font-size: 0.82rem;
+    }
+    .ai-backbone-box {
+        padding: 20px 16px;
+    }
+}
+
+
 
 

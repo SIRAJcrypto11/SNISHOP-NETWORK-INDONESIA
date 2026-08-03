@@ -52,9 +52,19 @@
     <!-- Pricing -->
     <section class="section bg-white">
         <div class="container">
+            <!-- B2B vs B2C Primary Taxonomy Toggle -->
+            <div class="b2b-b2c-tabs-wrapper">
+                <div class="b2b-b2c-tabs" role="tablist">
+                    <button class="b2b-b2c-tab-btn active" data-filter="all">🌟 Semua Paket</button>
+                    <button class="b2b-b2c-tab-btn" data-filter="b2b">🏢 Mitra Bisnis (B2B AI-ERP)</button>
+                    <button class="b2b-b2c-tab-btn" data-filter="b2c">🛍️ Konsumen Ritel (B2C)</button>
+                </div>
+            </div>
+
             <div class="pricing-grid stagger">
                 <!-- Starter -->
-                <div class="pricing-card fade-in">
+                <div class="pricing-card fade-in" data-type="b2c">
+                    <div style="margin-bottom: 8px;"><span class="badge-b2c">B2C • PERSONAL</span></div>
                     <h3 class="pricing-name">Starter</h3>
                     <div class="pricing-price">Gratis</div>
                     <div class="pricing-period">untuk memulai</div>
@@ -68,7 +78,8 @@
                 </div>
                 
                 <!-- Standard -->
-                <div class="pricing-card featured fade-in">
+                <div class="pricing-card featured fade-in" data-type="b2c">
+                    <div style="margin-bottom: 8px;"><span class="badge-b2c">B2C • POPULAR</span></div>
                     <h3 class="pricing-name">Standard</h3>
                     <div class="pricing-price">Rp 50K</div>
                     <div class="pricing-period">per bulan</div>
@@ -83,7 +94,8 @@
                 </div>
                 
                 <!-- Plus -->
-                <div class="pricing-card fade-in">
+                <div class="pricing-card fade-in" data-type="b2c">
+                    <div style="margin-bottom: 8px;"><span class="badge-b2c">B2C • PRO</span></div>
                     <h3 class="pricing-name">Plus</h3>
                     <div class="pricing-price">Rp 100K</div>
                     <div class="pricing-period">per bulan</div>
@@ -97,8 +109,25 @@
                     <a href="https://jasacekplagiat.snishop.com/" class="btn btn-secondary" target="_blank" style="width: 100%;">Pilih Paket</a>
                 </div>
                 
+                <!-- B2B AI-ERP Business Starter -->
+                <div class="pricing-card fade-in" data-type="b2b" style="border: 2px solid #3b82f6; background: linear-gradient(180deg, #eff6ff, #ffffff); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);">
+                    <div style="margin-bottom: 8px;"><span class="badge-ai-core">B2B • AI AUTONOMOUS ERP</span></div>
+                    <h3 class="pricing-name">🤖 AI-ERP Bisnis</h3>
+                    <div class="pricing-price" style="color: #1e3a8a;">Rp 99K</div>
+                    <div class="pricing-period">per bulan / usaha (Ramah UMKM)</div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>POS, Kasir & Manajemen Gudang</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Otomatisasi Multi-Step AI Voice/Text</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Laporan Keuangan & HPP Otomatis</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Unlimited Produk & Transaksi</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><span>Dedicated WA Support</span></li>
+                    </ul>
+                    <a href="https://erp.snishop.com/" class="btn btn-primary" target="_blank" style="width: 100%; background: linear-gradient(135deg, #1e3a8a, #2563eb);">Coba AI-ERP Gratis</a>
+                </div>
+
                 <!-- Enterprise -->
-                <div class="pricing-card fade-in">
+                <div class="pricing-card fade-in" data-type="b2b">
+                    <div style="margin-bottom: 8px;"><span class="badge-b2b">B2B • CUSTOM ENTERPRISE</span></div>
                     <h3 class="pricing-name">Enterprise</h3>
                     <div class="pricing-price">Custom</div>
                     <div class="pricing-period">sesuai kebutuhan</div>
@@ -194,6 +223,29 @@
                         <tr>
                             <td style="padding: 12px 0;">Domain .com</td>
                             <td style="text-align: right; font-weight: 600;">Rp 150.000/thn</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- AI-ERP (B2B) -->
+                <div class="card fade-in" style="border: 2px solid #3b82f6; background: linear-gradient(180deg, #eff6ff, #ffffff);">
+                    <h3 style="color: #2563eb; margin-bottom: var(--space-md);">🏢 AI-First ERP & POS (B2B)</h3>
+                    <table style="width: 100%; font-size: 0.875rem;">
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 12px 0;">ERP UMKM (Stok + POS + Kasir)</td>
+                            <td style="text-align: right; font-weight: 600;">Rp 99.000/bln</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 12px 0;">Otomatisasi Multi-Step AI Voice/Text</td>
+                            <td style="text-align: right; font-weight: 600;">Termasuk</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 12px 0;">Integrasi Laporan Keuangan & HPP</td>
+                            <td style="text-align: right; font-weight: 600;">Termasuk</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px 0;">Enterprise Custom Setup & Kustomisasi</td>
+                            <td style="text-align: right; font-weight: 600;">Custom WA</td>
                         </tr>
                     </table>
                 </div>

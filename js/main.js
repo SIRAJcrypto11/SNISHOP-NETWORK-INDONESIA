@@ -898,4 +898,73 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // === SNISHOP AI-First B2B vs B2C Interactive Filter & Taxonomy ===
+    const b2bB2cBtns = document.querySelectorAll('.b2b-b2c-tab-btn');
+    if (b2bB2cBtns.length > 0) {
+        b2bB2cBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                b2bB2cBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter') || 'all';
+
+                // Filter cards across the active page
+                const cardsToFilter = document.querySelectorAll('.service-card, .card, .feature-app-card, .pricing-card');
+                cardsToFilter.forEach(card => {
+                    const cardType = card.getAttribute('data-type') || '';
+                    const cardCat = card.getAttribute('data-category') || '';
+                    const cardHTML = card.innerHTML.toUpperCase();
+
+                    let isB2B = cardType.includes('b2b') || cardCat === 'b2b-erp' || cardCat === 'it' || cardHTML.includes('B2B') || cardHTML.includes('ERP') || cardHTML.includes('MITRA') || cardHTML.includes('ENTERPRISE');
+                    let isB2C = cardType.includes('b2c') || cardCat === 'edukasi' || cardCat === 'aplikasi' || cardCat === 'game' || cardCat === 'ppob' || cardHTML.includes('B2C') || cardHTML.includes('EDUKASI') || cardHTML.includes('NETFLIX') || cardHTML.includes('GAME');
+
+                    let shouldShow = true;
+                    if (filter === 'b2b') shouldShow = isB2B;
+                    if (filter === 'b2c') shouldShow = isB2C;
+
+                    if (shouldShow) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.96)';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 30);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // === Category Nav Filter (layanan.html) ===
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (categoryBtns.length > 0 && serviceCards.length > 0) {
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cat = btn.getAttribute('data-category') || 'all';
+
+                serviceCards.forEach(card => {
+                    const cardCat = card.getAttribute('data-category');
+                    if (cat === 'all' || cardCat === cat) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(8px)';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 30);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
 });

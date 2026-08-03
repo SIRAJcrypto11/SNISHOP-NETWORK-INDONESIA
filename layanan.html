@@ -160,9 +160,19 @@
     <!-- Services -->
     <section class="section bg-white" id="layanan">
         <div class="container">
+            <!-- B2B vs B2C Primary Taxonomy Toggle -->
+            <div class="b2b-b2c-tabs-wrapper">
+                <div class="b2b-b2c-tabs" role="tablist">
+                    <button class="b2b-b2c-tab-btn active" data-filter="all">🌟 Semua Ekosistem</button>
+                    <button class="b2b-b2c-tab-btn" data-filter="b2b">🏢 Mitra Bisnis (B2B AI-ERP)</button>
+                    <button class="b2b-b2c-tab-btn" data-filter="b2c">🛍️ Konsumen Ritel (B2C)</button>
+                </div>
+            </div>
+
             <!-- Category Filter -->
             <div class="category-nav">
                 <button class="category-btn active" data-category="all">Semua</button>
+                <button class="category-btn" data-category="b2b-erp">AI-ERP & Mitra Bisnis</button>
                 <button class="category-btn" data-category="edukasi">Edukasi</button>
                 <button class="category-btn" data-category="aplikasi">Aplikasi Premium</button>
                 <button class="category-btn" data-category="it">IT Services</button>
@@ -171,9 +181,59 @@
             </div>
 
             <!-- Services Grid -->
-            <div class="services-grid stagger" id="edukasi">
+            <div class="services-grid stagger" id="b2b-services">
+                <!-- B2B AI-ERP Core -->
+                <div class="service-card fade-in" data-category="b2b-erp" data-type="b2b" style="border: 2px solid #3b82f6; background: linear-gradient(180deg, #eff6ff, #ffffff);">
+                    <div class="service-icon it" style="background: #e0f2fe;">🤖</div>
+                    <div style="margin-bottom: 8px;"><span class="badge-ai-core">B2B • AI AUTONOMOUS ERP</span></div>
+                    <h3 class="service-title">SNISHOP ERP AI-First</h3>
+                    <div class="service-price">Mulai Rp 99.000/bulan</div>
+                    <p class="service-desc">Sistem ERP dengan AI sebagai tulang punggung. Otomatisasi multi-tahap (Stok, POS, Gudang, dan Keuangan) dalam 1 perintah bahasa alami tanpa input manual.</p>
+                    <a href="https://erp.snishop.com/" class="btn btn-primary btn-sm" target="_blank" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);">Eksplor AI-ERP →</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="b2b-erp" data-type="b2b">
+                    <div class="service-icon it" style="background: #e0f2fe;">📊</div>
+                    <div style="margin-bottom: 8px;"><span class="badge-b2b">B2B • INTELLIGENT POS</span></div>
+                    <h3 class="service-title">KasirinAI & POS Terintegrasi</h3>
+                    <div class="service-price">Termasuk di ERP</div>
+                    <p class="service-desc">Aplikasi kasir pintar yang langsung menyinkronkan data penjualan ritel, mengurangi stok gudang, dan mencatat HPP secara otomatis oleh AI.</p>
+                    <a href="https://erp.snishop.com/" class="btn btn-primary btn-sm" target="_blank">Lihat Fitur</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="b2b-erp" data-type="b2b">
+                    <div class="service-icon it" style="background: #e0f2fe;">⚙️</div>
+                    <div style="margin-bottom: 8px;"><span class="badge-b2b">B2B • WORKFLOW AI</span></div>
+                    <h3 class="service-title">TODOIT Manajemen Bisnis</h3>
+                    <div class="service-price">Termasuk di ERP</div>
+                    <p class="service-desc">Alat manajemen tugas tim dan operasional usaha yang terhubung langsung dengan target keuangan dan pengeluaran harian UMKM.</p>
+                    <a href="https://todoit.snishop.com/" class="btn btn-primary btn-sm" target="_blank">Lihat Aplikasi</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="b2b-erp" data-type="b2b">
+                    <div class="service-icon it" style="background: #e0f2fe; padding: 4px;">
+                        <img src="https://usahakan.digital/assets/images/brand/usahakan-logo.png?v=3.2" alt="Usahakan Digital" style="width: 32px; height: 32px; object-fit: contain;">
+                    </div>
+                    <div style="margin-bottom: 8px;"><span class="badge-b2b">B2B • MITRA BISNIS DIGITAL</span></div>
+                    <h3 class="service-title">Usahakan.Digital</h3>
+                    <div class="service-price">Solusi Digital UMKM</div>
+                    <p class="service-desc">Platform layanan digital terlengkap untuk mendigitalisasi usaha Anda: pengembangan website, otomatisasi sistem, hingga pemasaran strategis.</p>
+                    <a href="https://usahakan.digital/" class="btn btn-primary btn-sm" target="_blank">Kunjungi Usahakan →</a>
+                </div>
+
+                <div class="service-card fade-in" data-category="b2b-erp" data-type="b2b">
+                    <div class="service-icon it" style="background: #e0f2fe; padding: 4px;">
+                        <img src="https://media.base44.com/images/public/6a466cfefa496691d6851447/18477e8d3_rupiahinlogo.png" alt="Rupiahin" style="width: 32px; height: 32px; object-fit: contain;">
+                    </div>
+                    <div style="margin-bottom: 8px;"><span class="badge-b2b">B2B • SOLUSI KEUANGAN & KASIR</span></div>
+                    <h3 class="service-title">Rupiahin.snishop.com</h3>
+                    <div class="service-price">Finansial & Kasir AI</div>
+                    <p class="service-desc">Solusi cerdas pencatatan keuangan usaha, kasir POS otonom, monitor arus kas, dan kalkulasi profit bisnis dalam satu platform terintegrasi.</p>
+                    <a href="https://rupiahin.snishop.com/" class="btn btn-primary btn-sm" target="_blank">Kunjungi Rupiahin →</a>
+                </div>
+
                 <!-- Edukasi -->
-                <div class="service-card fade-in" data-category="edukasi">
+                <div class="service-card fade-in" data-category="edukasi" data-type="b2c">
                     <div class="service-icon edu">📚</div>
                     <h3 class="service-title">Cek Turnitin Basic</h3>
                     <div class="service-price">Mulai Rp 9.000</div>
