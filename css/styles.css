@@ -5123,21 +5123,21 @@ p {
 }
 
 .gw-badge-blue {
-    background: rgba(37, 99, 235, 0.08);
-    color: #2563eb;
-    border-color: rgba(37, 99, 235, 0.22);
+    background: #e8f0fe;
+    color: #1a73e8;
+    border-color: #d2e3fc;
 }
 
 .gw-badge-orange {
-    background: rgba(249, 115, 22, 0.08);
-    color: #ea580c;
-    border-color: rgba(249, 115, 22, 0.22);
+    background: #fef7e0;
+    color: #b06000;
+    border-color: #fce8b2;
 }
 
 .gw-badge-green {
-    background: rgba(16, 185, 129, 0.08);
-    color: #059669;
-    border-color: rgba(16, 185, 129, 0.22);
+    background: #e6f4ea;
+    color: #137333;
+    border-color: #ceead6;
 }
 
 .gw-dot-pulse {
@@ -5432,5 +5432,59 @@ html, body {
         border-radius: var(--radius-md) !important;
         text-align: center !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    }
+}
+
+/* --- 4. GOOGLE WORKSPACE SEGMENTED NAVIGATION BAR (.gw-segmented-nav) --- */
+.gw-segmented-nav-container {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.gw-segmented-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 100px;
+    padding: 6px;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.08);
+    flex-wrap: wrap;
+}
+
+.gw-nav-pill {
+    padding: 8px 20px;
+    border-radius: 100px;
+    color: #5f6368;
+    font-weight: 500;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.gw-nav-pill:hover {
+    color: #1a73e8;
+    background: #f8f9fa;
+}
+
+.gw-nav-pill.active {
+    color: #1a73e8;
+    background: #e8f0fe;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .gw-segmented-nav {
+        border-radius: 20px;
+        justify-content: center;
+        width: 100%;
+        padding: 8px;
+    }
+    .gw-nav-pill {
+        padding: 6px 14px;
+        font-size: 0.84rem;
     }
 }
