@@ -1371,7 +1371,11 @@ p {
 }
 
 .footer-hero-title {
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0 0.3em;
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-style: italic;
@@ -1384,7 +1388,12 @@ p {
     z-index: 1;
     /* Responsive font - scales with viewport */
     font-size: clamp(2rem, 8vw, 10rem);
-    white-space: nowrap;
+    white-space: normal;
+    width: 100%;
+}
+
+.footer-hero-title span {
+    display: inline-block;
 }
 
 /* Copyright section */
@@ -1401,15 +1410,29 @@ p {
     margin: 4px 0;
 }
 
-/* Mobile - BIGGER text to fill space */
+/* Mobile - Stacked lines on mobile (SNISHOP top, NETWORK bottom) */
 @media (max-width: 768px) {
     .footer-hero-title {
-        font-size: 12vw;
-        /* Much bigger on mobile */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 13vw !important;
+        line-height: 0.95 !important;
+        width: 100% !important;
+        gap: 4px !important;
+    }
+
+    .footer-hero-title span {
+        display: block !important;
+        text-align: center !important;
+        width: 100% !important;
     }
 
     .footer-hero-text {
-        padding: 40px 0 20px;
+        padding: 30px 0 15px !important;
+        overflow: hidden !important;
+        width: 100% !important;
     }
 }
 
