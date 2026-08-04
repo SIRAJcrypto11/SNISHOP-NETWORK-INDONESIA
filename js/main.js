@@ -24,9 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, { passive: true });
 
-    // === Mobile Menu Toggle ===
+    // === Mobile Menu Toggle & Dynamic Mobile CTAs ===
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav');
+
+    if (nav && !nav.querySelector('.mobile-nav-actions')) {
+        const mobileActions = document.createElement('div');
+        mobileActions.className = 'mobile-nav-actions';
+        mobileActions.innerHTML = `
+            <a href="https://erp.snishop.com/" class="btn btn-primary" target="_blank" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);">🚀 Mulai AI-ERP (B2B)</a>
+            <a href="https://wa.me/6285185151356?text=Halo%20SNISHOP.ID" class="btn btn-secondary" target="_blank">💬 Hubungi Sales (B2B)</a>
+        `;
+        nav.appendChild(mobileActions);
+    }
 
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', function () {
@@ -34,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
             menuToggle.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
-        nav.querySelectorAll('.nav-link').forEach(link => {
+        // Close menu when clicking a link or CTA button inside nav
+        nav.querySelectorAll('.nav-link, .mobile-nav-actions a').forEach(link => {
             link.addEventListener('click', function () {
                 nav.classList.remove('active');
                 menuToggle.classList.remove('active');

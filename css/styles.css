@@ -5078,9 +5078,128 @@ p {
         padding: 40px 0 !important;
     }
 
-    /* Hard stop on horizontal scroll */
+    /* Use clip instead of hidden to prevent horizontal scroll WITHOUT breaking position: sticky */
     body, html {
-        overflow-x: hidden !important;
+        overflow-x: clip !important;
+        overflow-y: visible !important;
         width: 100%;
+    }
+}
+
+/* ==========================================================================
+   SINGULARITY OVERRIDE: MOBILE HEADER NEATNESS & STICKY STACKING FIX
+   ========================================================================== */
+
+/* --- 1. THE STICKY STACKING CARD FIX --- */
+/* CRITICAL: Never use overflow:hidden or overflow-x:hidden on body/html or section containers, as it computes overflow-y:auto and destroys position:sticky! */
+html, body {
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+}
+
+/* Ensure no ancestor CSS transform traps sticky positioning */
+.stacking-section,
+.stacking-section.section-reveal,
+.stacking-section.section-reveal.section-visible {
+    transform: none !important;
+    overflow: visible !important;
+}
+
+.stacking-cards-container,
+.stacking-cards-sticky {
+    overflow: visible !important;
+    transform: none !important;
+}
+
+/* Ensure sticky positioning operates reliably across all viewports */
+.stacking-card {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    transform: none !important;
+    will-change: auto !important;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+}
+
+/* --- 2. MOBILE HEADER CLEANUP (ZERO CLUTTER / ZERO STACKING) --- */
+@media (max-width: 992px) {
+    /* Hide CTA buttons and AI PARTNER pill badge from the header top bar on mobile */
+    .header-actions {
+        display: none !important;
+    }
+
+    .badge-b2b-nav {
+        display: none !important;
+    }
+
+    /* Keep header top bar neat: Logo on the left, Hamburger toggle on the right */
+    .header-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+        gap: 16px !important;
+    }
+
+    .logo {
+        flex-shrink: 0 !important;
+        max-width: 75% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .logo img {
+        height: 36px !important;
+        width: auto !important;
+    }
+
+    /* Format navigation menu for mobile */
+    .nav {
+        position: fixed !important;
+        top: 64px !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: calc(100vh - 64px) !important;
+        background: var(--white) !important;
+        flex-direction: column !important;
+        padding: 24px var(--space-lg) 48px !important;
+        overflow-y: auto !important;
+        transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .nav.active {
+        left: 0 !important;
+    }
+}
+
+/* --- 3. MOBILE HAMBURGER MENU ACTION BUTTONS --- */
+.mobile-nav-actions {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .mobile-nav-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 24px !important;
+        padding-top: 24px !important;
+        border-top: 1px solid var(--border) !important;
+    }
+
+    .mobile-nav-actions .btn {
+        display: flex !important;
+        width: 100% !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 14px 20px !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        border-radius: var(--radius-md) !important;
+        text-align: center !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
     }
 }
