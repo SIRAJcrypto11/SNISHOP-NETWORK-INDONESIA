@@ -1165,38 +1165,67 @@ p {
 }
 
 .commission-floating-card {
-    background: white;
-    padding: var(--space-2xl);
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
     border-radius: 24px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 30px 60px rgba(29, 78, 216, 0.1), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    overflow: hidden;
     z-index: 3;
     animation: float 6s ease-in-out infinite;
-    max-width: 320px;
+    max-width: 340px;
+    width: 100%;
+}
+
+.commission-header {
+    background: #f1f5f9;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .card-label {
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--google-grey-500);
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 8px;
     display: block;
+}
+
+.commission-body {
+    padding: 24px;
+    text-align: left;
 }
 
 .card-value {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 800;
-    color: var(--google-grey-900);
+    color: #0f172a;
     display: block;
+    line-height: 1.1;
+    margin-bottom: 4px;
 }
 
 .card-note {
-    font-size: 0.75rem;
-    color: var(--google-grey-600);
-    margin-top: 4px;
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.commission-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.commission-features li {
+    font-size: 0.875rem;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
 }
 
 @keyframes pulse {
@@ -1277,36 +1306,51 @@ p {
 }
 
 .benefit-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: var(--space-lg);
-    border-radius: var(--radius-lg);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform var(--transition-normal);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 32px 24px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .benefit-item:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .benefit-icon {
-    font-size: 2rem;
-    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
     display: block;
 }
 
 .benefit-title {
-    color: var(--white);
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: var(--space-xs);
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
 .benefit-desc {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.875rem;
-    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .membership-actions {
