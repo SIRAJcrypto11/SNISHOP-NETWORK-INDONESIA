@@ -19,6 +19,8 @@
     --white: #ffffff;
     --surface: #fafafa;
     --border: #e4e4e7;
+    --border-glass: rgba(255, 255, 255, 0.1); /* Untuk Dark mode / Glass */
+    --border-subtle: rgba(0, 0, 0, 0.08); /* Border ultra-tipis */
     --text-primary: #09090b;
     --text-secondary: #71717a;
     --text-tertiary: #a1a1aa;
@@ -27,15 +29,16 @@
     --accent-orange: #f97316;
     --accent-orange-hover: #ea580c;
 
-    /* Ultra-Refined Shadows */
+    /* Ultra-Refined Shadows (Vercel Style) */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
     --shadow-glow: 0 0 30px rgba(10, 10, 10, 0.05);
+    --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.1);
 
     /* Premium Typography */
-    --font-primary: 'Inter', 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-primary: 'Inter', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Tighter Spacing System */
@@ -49,11 +52,11 @@
     --space-4xl: 96px;
     --space-5xl: 128px;
 
-    /* Modern Border Radii */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    /* Modern Border Radii (Apple-like squircle approximation) */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
     --radius-full: 9999px;
 
     /* Container */
@@ -61,9 +64,9 @@
     --container-wide: 1536px;
 
     /* Snappy Transitions */
-    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* === RESET & BASE === */
@@ -112,36 +115,38 @@ ol {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.1;
     color: var(--text-primary);
-    letter-spacing: -0.02em; /* Tighter tracking for premium feel */
+    letter-spacing: -0.04em; /* Linear/Vercel standard for massive headers */
 }
 
 h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Fluid typography */
+    font-size: clamp(2.5rem, 6vw, 5rem); /* Extra fluid typography */
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.05em;
 }
 
 h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: -0.025em;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    letter-spacing: -0.035em;
 }
 
 h3 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    letter-spacing: -0.025em;
 }
 
 h4 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    letter-spacing: -0.015em;
 }
 
 h5 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
 }
 
 h6 {
-    font-size: 1rem;
+    font-size: 1.125rem;
 }
 
 p {
@@ -380,18 +385,22 @@ p {
     }
 }
 .card {
-    background: var(--white);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    padding: var(--space-lg);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-xl);
     transition: all var(--transition-normal);
     will-change: transform, box-shadow;
     transform: translate3d(0, 0, 0);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 .card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .card-icon {
@@ -435,12 +444,15 @@ p {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    transition: box-shadow var(--transition-normal);
+    background: rgba(255, 255, 255, 0.7); /* Glassmorphism Base */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: box-shadow var(--transition-normal), background var(--transition-normal);
 }
 
 .header.scrolled {
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: var(--shadow-sm);
 }
 
@@ -5880,5 +5892,104 @@ html, body {
     .gw-app-strip-item {
         width: calc(50% - 10px) !important;
     }
+}
+
+
+/* ================================================
+   PREMIUM B2B ANIMATIONS & OVERRIDES (ANTI-SLOP)
+   ================================================ */
+
+/* Buttery Smooth Easing */
+.fade-in, .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: opacity, transform;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-glass);
+}
+
+.glass-panel-dark {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Bento Box Grid Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+.bento-item {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-item:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.bento-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.bento-item:hover::before {
+    opacity: 1;
+}
+
+/* Mesh Gradients */
+.bg-mesh-hero {
+    background-color: #fafafa;
+    background-image: 
+        radial-gradient(at 40% 20%, hsla(28,100%,74%,0.15) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(189,100%,56%,0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(355,100%,93%,0.15) 0px, transparent 50%);
+}
+
+.bg-mesh-dark {
+    background-color: #0a0a0a;
+    background-image: 
+        radial-gradient(at 40% 20%, hsla(28,100%,74%,0.1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(220,100%,56%,0.15) 0px, transparent 50%);
+    color: white;
+}
+
+/* Micro-interaction for all buttons */
+.btn:active {
+    transform: scale(0.96) !important;
+}
+
+/* F-Pattern text limits */
+.content-readable {
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
 }
 

@@ -17,11 +17,20 @@
 
     <style>
         .faq-item {
-            background: var(--white);
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             margin-bottom: var(--space-md);
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: all var(--transition-normal);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
         }
 
         .faq-question {
@@ -89,7 +98,7 @@
     </header>
 
     <!-- Hero -->
-    <section class="section bg-surface">
+    <section class="section bg-mesh-hero">
         <div class="container text-center">
             <h1 class="fade-in">Pertanyaan yang Sering Diajukan</h1>
             <p class="fade-in" style="max-width: 650px; margin: var(--space-md) auto 0;">
