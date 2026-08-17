@@ -977,6 +977,167 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         }
+
+        // Live instant search
+        const searchInput = document.getElementById('serviceSearchInput');
+        if (searchInput && serviceCards.length > 0) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                serviceCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (query === '' || text.includes(query)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
     }
+
+    // === Silicon Valley Spotlight Mouse Tracker (60 FPS) ===
+    const spotlightCards = document.querySelectorAll('.spotlight-card, .bento-cell, .rootly-stage-window');
+
+    if (spotlightCards.length > 0) {
+        document.addEventListener('mousemove', (e) => {
+            window.requestAnimationFrame(() => {
+                spotlightCards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }, { passive: true });
+    }
+
+    // === Interactive AI Terminal Simulator (Supabase + Rootly) ===
+    const terminalStream = document.getElementById('terminalStream');
+    const chipBtns = document.querySelectorAll('.terminal-quick-chips .chip-btn');
+    const termTabs = document.querySelectorAll('.terminal-tabs-row .term-tab');
+    const termInput = document.getElementById('termInputText');
+
+    const sampleFlows = {
+        stok: {
+            cmd: "Tambahkan produk A, stok 300, modal 3000, jual 10000, supplier PT Maju Jaya ke Gudang B",
+            steps: [
+                { badge: "0.1s", title: "Supplier Resolution", desc: "Found ID: SUP-0921 (PT Maju Jaya) verified." },
+                { badge: "0.3s", title: "Warehouse Target", desc: "Linked to Warehouse_B_02 (Kapasitas Tersedia: 82%)." },
+                { badge: "0.5s", title: "Catalog & Stock", desc: "SKU 'PROD-A' Created. Stock increment +300 unit recorded." },
+                { badge: "0.8s", title: "Accounting Entry", desc: "Jurnal Pembelian Rp900.000 tercatat. Estimasi margin laba: 70% (Rp7.000/unit)." }
+            ]
+        },
+        qris: {
+            cmd: "Aktivasi QRIS Dinamis Usahakan.Digital untuk Merchant Kedai Kopi Nusantara",
+            steps: [
+                { badge: "0.2s", title: "Merchant KYC", desc: "Merchant 'Kedai Kopi Nusantara' lolos verifikasi SNI-SHIELD." },
+                { badge: "0.4s", title: "Tripay Gateway Link", desc: "NMID & QRIS Dinamis PCI-DSS Level 1 generated." },
+                { badge: "0.7s", title: "POS Kasir Sync", desc: "Dashboard kasir kasir.usahakan.digital langsung aktif 24/7." }
+            ]
+        },
+        gks: {
+            cmd: "RupiahIN AI: Analisis arus kas bulan ini dan rekomendasi penghematan modal",
+            steps: [
+                { badge: "0.1s", title: "Local GKS Retrieval", desc: "Querying 127 sub-topik regulasi & basis data transaksi lokal." },
+                { badge: "0.4s", title: "CoT Chain Analysis", desc: "HPP rasio 42% (Optimal). Biaya operasional non-esensial terdeteksi +14%." },
+                { badge: "0.6s", title: "Synthesized Advice", desc: "Rekomendasi: Alihkan 10% cashflow cadangan ke inventaris fast-moving." }
+            ]
+        }
+    };
+
+    function renderTerminalFlow(flowKey) {
+        const flow = sampleFlows[flowKey] || sampleFlows.stok;
+        if (termInput) termInput.textContent = flow.cmd;
+        if (terminalStream) {
+            terminalStream.innerHTML = '';
+            flow.steps.forEach((step, idx) => {
+                const stepEl = document.createElement('div');
+                stepEl.className = 'term-step-line';
+                stepEl.style.opacity = '0';
+                stepEl.style.transform = 'translateY(6px)';
+                stepEl.innerHTML = `
+                    <span class="term-step-badge">${step.badge}</span>
+                    <div>
+                        <div style="font-weight: 700; color: #38bdf8; font-size: 0.85rem;">${step.title}</div>
+                        <div style="color: #cbd5e1; font-size: 0.82rem;">${step.desc}</div>
+                    </div>
+                `;
+                terminalStream.appendChild(stepEl);
+                setTimeout(() => {
+                    stepEl.style.transition = 'all 0.3s ease';
+                    stepEl.style.opacity = '1';
+                    stepEl.style.transform = 'translateY(0)';
+                }, (idx + 1) * 150);
+            });
+        }
+    }
+
+    if (chipBtns.length > 0) {
+        chipBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetFlow = btn.getAttribute('data-flow') || 'stok';
+                renderTerminalFlow(targetFlow);
+            });
+        });
+    }
+
+    if (termTabs.length > 0) {
+        termTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                termTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const targetFlow = tab.getAttribute('data-flow') || 'stok';
+                renderTerminalFlow(targetFlow);
+            });
+        });
+    }
+
+    // Initial render terminal
+    if (terminalStream) {
+        renderTerminalFlow('stok');
+    }
+
+    // === ROI & Margin Calculator Engine (Vercel Style) ===
+    const trxSlider = document.getElementById('calcTrxSlider');
+    const trxValDisplay = document.getElementById('calcTrxVal');
+    const resHours = document.getElementById('calcResHours');
+    const resSavings = document.getElementById('calcResSavings');
+    const resMargin = document.getElementById('calcResMargin');
+
+    function updateROICalculator() {
+        if (!trxSlider) return;
+        const trx = parseInt(trxSlider.value, 10) || 500;
+        if (trxValDisplay) trxValDisplay.textContent = trx.toLocaleString('id-ID') + ' Transaksi / Bulan';
+        
+        // Formulasi bisnis penghematan waktu & biaya
+        const hoursSaved = Math.round(trx * 0.08); // Rata-rata hemat 0.08 jam per transaksi
+        const costSavings = Math.round(trx * 15000); // Estimasi efisiensi operasional Rp15.000/trx
+        const profitMarginBoost = Math.min(48, Math.round(15 + (trx / 200)));
+
+        if (resHours) resHours.textContent = hoursSaved + ' Jam / Bln';
+        if (resSavings) resSavings.textContent = 'Rp ' + (costSavings / 1000000).toFixed(1) + ' Juta';
+        if (resMargin) resMargin.textContent = '+' + profitMarginBoost + '% Profit';
+    }
+
+    if (trxSlider) {
+        trxSlider.addEventListener('input', updateROICalculator);
+        updateROICalculator();
+    }
+
+    // === Modern FAQ Accordions ===
+    const faqQuestions = document.querySelectorAll('.faq-question, .faq-item-header');
+    faqQuestions.forEach(q => {
+        q.addEventListener('click', () => {
+            const parent = q.closest('.faq-item');
+            if (parent) {
+                const wasActive = parent.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                if (!wasActive) {
+                    parent.classList.add('active');
+                }
+            }
+        });
+    });
 
 });

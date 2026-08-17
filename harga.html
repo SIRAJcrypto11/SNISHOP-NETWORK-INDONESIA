@@ -13,24 +13,33 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-inner">
+            <span class="announcement-pill">Harga 2026</span>
+            <span>Transparansi harga tanpa biaya tersembunyi &bull; Garansi 100% aktif & resmi.</span>
+            <a href="https://erp.snishop.com/" target="_blank" class="announcement-link">Coba AI-ERP &rarr;</a>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-inner">
-                <a href="/" class="logo">
+                <a href="index.html" class="logo">
                     <img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID">
                     <span class="logo-text"></span>
                 </a>
                 <nav class="nav">
-                    <a href="/" class="nav-link">Beranda</a>
-                    <a href="/layanan" class="nav-link">Layanan</a>
-                    <a href="/harga" class="nav-link active">Harga</a>
-                    <a href="/tentang" class="nav-link">Tentang</a>
-                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="index.html" class="nav-link">Beranda</a>
+                    <a href="layanan.html" class="nav-link">Layanan</a>
+                    <a href="harga.html" class="nav-link active">Harga</a>
+                    <a href="tentang.html" class="nav-link">Tentang</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
                 </nav>
                 <div class="header-actions">
                     <a href="https://wa.me/6285185151356" class="btn btn-secondary" target="_blank">Hubungi Sales</a>
-                    <a href="/layanan" class="btn btn-primary">Mulai Sekarang</a>
+                    <a href="https://erp.snishop.com/" class="btn btn-primary" target="_blank" style="background: linear-gradient(135deg, #1e3a8a, #2563eb);">Masuk AI-ERP</a>
                 </div>
                 <button class="menu-toggle" aria-label="Menu">
                     <span></span><span></span><span></span>
@@ -39,13 +48,53 @@
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="section bg-mesh-hero">
+    <!-- Atmospheric Hero -->
+    <section class="hero-atmospheric" style="padding: 100px 0 60px;">
         <div class="container text-center">
-            <h1 class="fade-in">Harga Transparan, Tanpa Biaya Tersembunyi</h1>
-            <p class="fade-in" style="max-width: 600px; margin: var(--space-md) auto 0;">
-                Pilih paket yang sesuai dengan kebutuhan Anda. Semua paket termasuk dukungan penuh.
+            <div class="hero-badge-pill fade-in">
+                <span class="pill-dot"></span>
+                <span>Transparansi & Efisiensi Biaya</span>
+            </div>
+            <h1 class="hero-headline-worldclass fade-in" style="font-size: clamp(2.2rem, 4.2vw, 3.5rem);">
+                Harga Transparan, <span class="gradient-text">Tanpa Biaya Tersembunyi.</span>
+            </h1>
+            <p class="hero-subheadline-worldclass fade-in" style="max-width: 650px; margin-bottom: 32px;">
+                Pilih paket yang sesuai dengan skala bisnis atau kebutuhan digital harian Anda. Semua paket didukung bantuan teknis 24/7.
             </p>
+
+            <!-- Interactive ROI Calculator Widget -->
+            <div class="roi-calc-container fade-in text-left">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 4px;">📈 Kalkulator Efisiensi Bisnis AI-ERP</h4>
+                        <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Geser slider untuk melihat estimasi penghematan waktu & biaya operasional usaha Anda.</p>
+                    </div>
+                    <span class="cal-pill active">Simulasi Otomatis</span>
+                </div>
+
+                <div class="roi-slider-group">
+                    <div class="roi-slider-header">
+                        <span>Volume Transaksi Bulanan Usaha:</span>
+                        <span id="calcTrxVal" style="color: #2563eb; font-weight: 800;">500 Transaksi / Bulan</span>
+                    </div>
+                    <input type="range" class="roi-slider" id="calcTrxSlider" min="50" max="5000" step="50" value="500">
+                </div>
+
+                <div class="roi-results-grid">
+                    <div class="roi-res-box">
+                        <div class="roi-res-val" id="calcResHours">40 Jam / Bln</div>
+                        <div class="roi-res-label">Waktu Kerja Manual Terpangkas</div>
+                    </div>
+                    <div class="roi-res-box">
+                        <div class="roi-res-val" id="calcResSavings">Rp 7.5 Juta</div>
+                        <div class="roi-res-label">Estimasi Efisiensi Biaya Operasional</div>
+                    </div>
+                    <div class="roi-res-box">
+                        <div class="roi-res-val" id="calcResMargin">+18% Profit</div>
+                        <div class="roi-res-label">Peningkatan Margin Laba Usaha</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -272,7 +321,7 @@
             </div>
             
             <div class="text-center mt-4">
-                <a href="/layanan" class="btn btn-primary">Lihat Semua Layanan</a>
+                <a href="layanan.html" class="btn btn-primary">Lihat Semua Layanan</a>
             </div>
         </div>
     </section>
@@ -283,7 +332,7 @@
             <div class="footer-grid">
                 <!-- Brand -->
                 <div class="footer-brand">
-                    <a href="/" class="logo">
+                    <a href="index.html" class="logo">
                         <img src="https://i.ibb.co.com/MGVPZtv/20230722-162429.png" alt="SNISHOP.ID">
                         <span class="logo-text"></span>
                     </a>
