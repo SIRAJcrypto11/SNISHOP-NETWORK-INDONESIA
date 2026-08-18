@@ -118,26 +118,25 @@ body {
     position: relative;
     font-family: var(--font-primary);
     color: var(--text-primary);
-    background-color: var(--surface);
+    background-color: transparent !important;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* === FIXED AMBIENT NATURE CANVAS (Hardware-Accelerated Peek-Through Layer) === */
+/* === FIXED AMBIENT NATURE CANVAS (Vivid Nature Wallpaper with High Contrast & Peek-Through) === */
 .nature-ambient-canvas {
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
     background-image: 
-        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(37, 99, 235, 0.05) 0%, transparent 70%),
-        linear-gradient(180deg, rgba(250, 250, 248, 0.85) 0%, rgba(250, 250, 248, 0.95) 100%),
-        url('../assets/images/nature_aesthetic_ambient.jpg');
+        radial-gradient(ellipse 100% 70% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 65%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(250, 250, 248, 0.10) 30%, rgba(250, 250, 248, 0.22) 100%),
+        url('../assets/images/nature_vivid_mountains.jpg');
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
-    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -6075,6 +6074,7 @@ html, body {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 2px 24px rgba(255, 255, 255, 0.95), 0 1px 6px rgba(255, 255, 255, 0.85);
 }
 
 .hero-headline-worldclass .gradient-text {
@@ -6086,10 +6086,11 @@ html, body {
 .hero-subheadline-worldclass {
     font-size: clamp(1.05rem, 1.8vw, 1.25rem);
     line-height: 1.65;
-    color: #64748b;
+    color: #1e293b;
     max-width: 760px;
     margin: 0 auto 36px;
-    font-weight: 400;
+    font-weight: 480;
+    text-shadow: 0 1px 16px rgba(255, 255, 255, 0.95);
 }
 
 .hero-cta-group {
@@ -7641,16 +7642,14 @@ html, body {
     z-index: 10;
 }
 
-/* === ATMOSPHERIC HERO (Aesthetic Nature Canvas) === */
+/* === ATMOSPHERIC HERO (Vivid Nature Canvas with Peek-Through) === */
 .hero-atmospheric {
     position: relative;
     padding: 96px 0 60px;
     background: 
-        linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 250, 248, 0.82) 45%, rgba(250, 250, 248, 0.98) 100%),
-        radial-gradient(ellipse 70% 45% at 50% 0%, rgba(37, 99, 235, 0.06) 0%, transparent 80%),
-        url('../assets/images/nature_aesthetic_ambient.jpg') top center / cover no-repeat;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 75%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(250, 250, 248, 0.06) 50%, rgba(250, 250, 248, 0.2) 100%),
+        url('../assets/images/nature_vivid_mountains.jpg') top center / cover no-repeat;
     overflow: hidden;
 }
 
@@ -7660,8 +7659,8 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 90px;
-    background: linear-gradient(to bottom, transparent, var(--surface));
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, rgba(250, 250, 248, 0.4));
     pointer-events: none;
 }
 
@@ -7765,14 +7764,14 @@ html, body {
     max-width: var(--container-wide);
     border-radius: var(--radius-xl);
     background: 
-        linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(250, 250, 248, 0.15) 50%, rgba(250, 250, 248, 0.55) 100%),
-        url('../assets/images/nature_aesthetic_ambient.jpg') center center / cover no-repeat;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.55) 100%),
+        url('../assets/images/nature_vivid_mountains.jpg') center center / cover no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     overflow: hidden;
-    padding: 110px 32px;
+    padding: 120px 32px;
     text-align: center;
-    color: #0a0a0a;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7782,29 +7781,29 @@ html, body {
 .nature-banner-inner {
     position: relative;
     z-index: 2;
-    max-width: 840px;
+    max-width: 860px;
     margin: 0 auto;
 }
 
 .nature-banner-headline {
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    font-weight: 600;
-    line-height: 1.15;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 650;
+    line-height: 1.14;
     letter-spacing: -0.035em;
-    color: #0a0a0a;
+    color: #ffffff !important;
     margin-bottom: 20px;
-    text-shadow: 0 2px 24px rgba(255, 255, 255, 0.95);
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .nature-banner-subheadline {
-    font-size: 1.125rem;
-    line-height: 1.6;
-    color: #374151;
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.95) !important;
     margin-bottom: 36px;
-    max-width: 680px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0 1px 16px rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
 }
 
 .nature-banner-actions {
@@ -7818,21 +7817,21 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #0a0a0a;
-    color: #ffffff;
+    background: #ffffff;
+    color: #0a0a0a;
     font-weight: 600;
-    padding: 14px 30px;
+    padding: 14px 32px;
     border-radius: 9999px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-banner-primary:hover {
-    background: #1f2937;
+    background: #f1f5f9;
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
-    color: #ffffff;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    color: #0a0a0a;
 }
 
 .btn-banner-primary:active {
@@ -7843,23 +7842,24 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #0a0a0a;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
     font-weight: 600;
-    padding: 14px 30px;
+    padding: 14px 32px;
     border-radius: 9999px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-banner-secondary:hover {
-    background: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    color: #0a0a0a;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
 }
 
 .btn-banner-secondary:active {
