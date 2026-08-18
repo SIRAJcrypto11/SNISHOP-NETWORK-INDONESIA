@@ -1192,4 +1192,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // === INTERACTIVE SPOTLIGHT CARDS (Cursor-Tracking Radial Glow) ===
+    const spotlightCards = document.querySelectorAll('.spotlight-card, .rootly-feature-card, .portfolio-card-large, .bento-card');
+    spotlightCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // === SUBTLE SCROLL PARALLAX EFFECT ON NATURE WALLPAPER ===
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        // Parallax only on large screens
+        if (window.innerWidth >= 1024) {
+            const banner = document.querySelector('.rootly-nature-banner');
+            if (banner) {
+                const rect = banner.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const offset = (window.innerHeight - rect.top) * 0.05;
+                    banner.style.backgroundPositionY = `calc(50% + ${offset}px)`;
+                }
+            }
+        }
+    }, { passive: true });
+
 });
