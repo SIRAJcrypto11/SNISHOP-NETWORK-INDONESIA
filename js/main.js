@@ -1016,12 +1016,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // === Silicon Valley Spotlight Mouse Tracker (60 FPS) ===
-    const spotlightCards = document.querySelectorAll('.spotlight-card, .bento-cell, .rootly-stage-window');
+    const spotlightElements = document.querySelectorAll('.spotlight-card, .bento-cell, .rootly-stage-window, .rootly-feature-card, .portfolio-card-large, .bento-card');
 
-    if (spotlightCards.length > 0) {
+    if (spotlightElements.length > 0) {
         document.addEventListener('mousemove', (e) => {
             window.requestAnimationFrame(() => {
-                spotlightCards.forEach(card => {
+                spotlightElements.forEach(card => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
@@ -1191,18 +1191,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-
-    // === INTERACTIVE SPOTLIGHT CARDS (Cursor-Tracking Radial Glow) ===
-    const spotlightCards = document.querySelectorAll('.spotlight-card, .rootly-feature-card, .portfolio-card-large, .bento-card');
-    spotlightCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
 
     // === SUBTLE SCROLL PARALLAX EFFECT ON NATURE WALLPAPER ===
     let lastScrollY = window.scrollY;
