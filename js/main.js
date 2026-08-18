@@ -1140,4 +1140,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // === Enterprise Portfolio Showcase Filter Engine ===
+    const portfolioFilterBtns = document.querySelectorAll('.portfolio-filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card-large');
+
+    if (portfolioFilterBtns.length > 0 && portfolioCards.length > 0) {
+        portfolioFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                portfolioFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioCards.forEach(card => {
+                    const cardCat = card.getAttribute('data-category');
+                    if (filter === 'all' || cardCat === filter) {
+                        card.style.display = 'grid';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 250);
+                    }
+                });
+            });
+        });
+    }
+
 });
