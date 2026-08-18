@@ -589,30 +589,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === EXACT HEIGHT MATCHER FOR PERFECT CARD STACKING ===
-    // Ensures taller background cards never bleed below shorter overlay cards
+    // === EXACT HEIGHT MATCHER & ZERO-SLIP ARCHITECTURE FOR PERFECT CARD STACKING ===
     const stackingCards = document.querySelectorAll('.stacking-card');
     if (stackingCards.length > 0) {
         const equalizeHeights = () => {
-            stackingCards.forEach(card => card.style.minHeight = 'auto'); // Reset
-            let maxHeight = 0;
-            // Find max height
-            stackingCards.forEach(card => {
-                if (card.offsetHeight > maxHeight) maxHeight = card.offsetHeight;
-            });
-            // Apply equal height
-            stackingCards.forEach(card => {
-                card.style.minHeight = maxHeight + 'px';
-            });
+            // Only equalize on desktop (>= 1024px); on mobile, let each card breathe naturally with compact height
+            if (window.innerWidth >= 1024) {
+                stackingCards.forEach(card => card.style.minHeight = 'auto');
+                let maxHeight = 0;
+                stackingCards.forEach(card => {
+                    if (card.offsetHeight > maxHeight) maxHeight = card.offsetHeight;
+                });
+                stackingCards.forEach(card => {
+                    card.style.minHeight = maxHeight + 'px';
+                });
+            } else {
+                stackingCards.forEach(card => card.style.minHeight = 'auto');
+            }
         };
 
-        // Initialize and bind
+        // Initialize and bind with ResizeObserver & Orientation
         equalizeHeights();
         window.addEventListener('resize', equalizeHeights, { passive: true });
+        window.addEventListener('orientationchange', equalizeHeights, { passive: true });
 
         // Failsafe for late-loading fonts/images
-        setTimeout(equalizeHeights, 500);
-        setTimeout(equalizeHeights, 1500);
+        setTimeout(equalizeHeights, 300);
+        setTimeout(equalizeHeights, 1000);
+        setTimeout(equalizeHeights, 2500);
+
+        // Optional: Desktop Subtle Stacking Scale Effect on Scroll
+        if (window.innerWidth >= 1024) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                stackingCards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top <= (76 + (index * 16))) {
+                        // Card is sticky-docked
+                        card.style.borderColor = 'rgba(0, 0, 0, 0.12)';
+                    } else {
+                        card.style.borderColor = 'var(--border-subtle)';
+                    }
+                });
+            }, { passive: true });
+        }
     }
 
     // === ENHANCED SECTION REVEAL ANIMATIONS ===

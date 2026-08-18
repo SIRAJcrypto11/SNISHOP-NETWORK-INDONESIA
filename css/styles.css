@@ -283,7 +283,6 @@ p {
 }
 
 @media (max-width: 768px) {
-
     .grid-4,
     .grid-3,
     .grid-2 {
@@ -291,38 +290,77 @@ p {
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 1.85rem;
+        line-height: 1.18;
+        letter-spacing: -0.03em;
     }
 
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.35rem;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+    }
+
+    p {
+        font-size: 0.875rem;
+        line-height: 1.55;
     }
 
     .section {
-        padding: var(--space-2xl) 0;
+        padding: 44px 0;
+    }
+
+    .section-badge {
+        font-size: 0.6875rem;
+        padding: 4px 10px;
+        letter-spacing: 0.04em;
+    }
+
+    .hero-headline-worldclass {
+        font-size: clamp(1.65rem, 5.5vw, 2.1rem) !important;
+        line-height: 1.18 !important;
+        letter-spacing: -0.03em !important;
+    }
+
+    .hero-subheadline-worldclass {
+        font-size: 0.875rem !important;
+        line-height: 1.55 !important;
+        margin: 12px auto 20px !important;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 8px !important;
+        margin-bottom: 28px !important;
+        width: 100%;
+    }
+
+    .hero-cta-group .btn {
+        width: 100% !important;
+        justify-content: center;
     }
 }
 
-/* 480px MOBILE COMPACT MODE (Ruang Nafas iPhone SE) */
+/* 480px MOBILE COMPACT MODE (Ruang Nafas iPhone SE / 320px) */
 @media (max-width: 480px) {
     .container {
-        padding: 0 var(--space-md); /* Reduce container padding from 24px to 16px */
+        padding: 0 14px;
     }
 
     .section {
-        padding: var(--space-xl) 0; /* Reduce section padding dramatically */
+        padding: 36px 0;
     }
 
     .section-sm {
-        padding: var(--space-lg) 0;
+        padding: 24px 0;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.65rem;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -2956,17 +2994,18 @@ p {
     pointer-events: none;
 }
 
-/* === STACKING CARDS SECTION === */
+/* === STACKING CARDS SECTION (Rootly Zero-Slip Architecture) === */
 .stacking-section {
     position: relative;
     padding: var(--space-4xl) 0;
-    background: linear-gradient(180deg, #f8fafc 0%, var(--white) 100%);
+    background: linear-gradient(180deg, var(--surface) 0%, var(--white) 100%);
+    overflow: visible;
 }
 
-/* Override container for full-width cards on desktop */
 .stacking-section .container {
-    max-width: 100%;
-    padding: 0 16px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
 }
 
 .stacking-section-header {
@@ -2975,13 +3014,17 @@ p {
 }
 
 .stacking-section-header h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
     margin-bottom: var(--space-sm);
 }
 
 .stacking-section-header p {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .stacking-cards-container {
@@ -2996,100 +3039,153 @@ p {
     width: 100%;
 }
 
+/* Base Stacking Card: Solid Opaque Background, 1px Precision Border, Smooth Shadow */
 .stacking-card {
+    position: -webkit-sticky;
     position: sticky;
-    top: 100px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 48px 56px;
-    margin-bottom: 40px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    top: 76px;
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 40px 48px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
-/* Stacking z-index - first card highest (10), last card lowest (1) */
-.stacking-card:nth-child(1) {
-    z-index: 10;
+.stacking-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
 }
 
-.stacking-card:nth-child(2) {
-    z-index: 9;
-    top: 115px;
-}
-
-.stacking-card:nth-child(3) {
-    z-index: 8;
-    top: 130px;
-}
-
-.stacking-card:nth-child(4) {
-    z-index: 7;
-    top: 160px;
-}
-
-.stacking-card:nth-child(5) {
-    z-index: 6;
-    top: 175px;
-}
-
-.stacking-card:nth-child(6) {
-    z-index: 5;
-    top: 190px;
-}
-
-.stacking-card:nth-child(7) {
-    z-index: 4;
-    top: 205px;
-}
-
-.stacking-card:nth-child(8) {
-    z-index: 3;
-    top: 220px;
-}
-
-.stacking-card:nth-child(9) {
-    z-index: 2;
-    top: 235px;
-}
-
-.stacking-card:nth-child(10) {
-    z-index: 1;
-    top: 250px;
-}
+/* Ascending Z-Index Architecture: Later cards smoothly slide OVER earlier cards */
+.stacking-card:nth-child(1) { z-index: 1; top: 76px; }
+.stacking-card:nth-child(2) { z-index: 2; top: 92px; }
+.stacking-card:nth-child(3) { z-index: 3; top: 108px; }
+.stacking-card:nth-child(4) { z-index: 4; top: 124px; }
+.stacking-card:nth-child(5) { z-index: 5; top: 140px; }
+.stacking-card:nth-child(6) { z-index: 6; top: 156px; }
+.stacking-card:nth-child(7) { z-index: 7; top: 172px; }
+.stacking-card:nth-child(8) { z-index: 8; top: 188px; }
+.stacking-card:nth-child(9) { z-index: 9; top: 204px; }
+.stacking-card:nth-child(10) { z-index: 10; top: 220px; }
 
 .stacking-card:last-child {
     margin-bottom: 0;
 }
 
-.stacking-card:hover {
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+/* Card Header */
+.stacking-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.stacking-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    flex-shrink: 0;
+}
+
+.stacking-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.stacking-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.stacking-card-price {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--snishop-blue);
 }
 
 /* Card Two-Column Layout for Desktop */
 .stacking-card-body {
     display: flex;
     gap: var(--space-2xl);
+    align-items: stretch;
 }
 
 .stacking-card-content {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stacking-card-desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.stacking-card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--space-xl);
+}
+
+.stacking-card-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+}
+
+.stacking-card-features li svg {
+    width: 18px;
+    height: 18px;
+    color: var(--google-green);
+    flex-shrink: 0;
+}
+
+.stacking-card-cta {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
 }
 
 .stacking-card-pricing-panel {
-    flex: 0 0 340px;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    border-radius: 16px;
-    padding: var(--space-xl);
-    border: 1px solid var(--border);
+    flex: 0 0 320px;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .stacking-card-pricing-panel h4 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: var(--space-lg);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
     color: var(--text-primary);
 }
 
@@ -3130,271 +3226,149 @@ p {
     color: var(--white);
 }
 
-/* Responsive: Stack on smaller screens */
+/* Tablet Stacking (<= 1024px) */
 @media (max-width: 1024px) {
     .stacking-card-body {
         flex-direction: column;
+        gap: var(--space-lg);
     }
 
     .stacking-card-pricing-panel {
-        flex: 1;
+        flex: 1 1 auto;
+        width: 100%;
     }
 
     .stacking-card {
-        padding: 32px 24px;
-        margin-bottom: 24px;
-        /* Smoother transitions for mobile */
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-            box-shadow 0.4s ease-out;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
-
-    /* Reduced top offsets for mobile - 10 cards */
-    .stacking-card:nth-child(1) {
-        top: 60px;
-    }
-
-    .stacking-card:nth-child(2) {
-        top: 70px;
-    }
-
-    .stacking-card:nth-child(3) {
-        top: 80px;
-    }
-
-    .stacking-card:nth-child(4) {
-        top: 90px;
-    }
-
-    .stacking-card:nth-child(5) {
-        top: 100px;
-    }
-
-    .stacking-card:nth-child(6) {
-        top: 110px;
-    }
-
-    .stacking-card:nth-child(7) {
-        top: 120px;
-    }
-
-    .stacking-card:nth-child(8) {
-        top: 130px;
-    }
-
-    .stacking-card:nth-child(9) {
-        top: 140px;
-    }
-
-    .stacking-card:nth-child(10) {
-        top: 150px;
+        padding: 28px 24px;
+        margin-bottom: 20px;
     }
 }
 
-/* Mobile-specific optimizations */
+/* Dedicated Mobile Stacking (<= 768px): Zero-Slip Compact View */
 @media (max-width: 768px) {
     .stacking-section {
-        padding: 16px 0;
-    }
-
-    .stacking-cards-container {
-        min-height: auto;
-    }
-
-    .stacking-card {
-        padding: 20px 14px;
-        margin-bottom: 8px;
-        border-radius: 14px;
-        /* Safari + Chrome sticky support */
-        position: -webkit-sticky;
-        position: sticky;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-    }
-
-    /* Mobile stacking: REVERSED z-index - later cards stack ON TOP */
-    .stacking-card:nth-child(1) {
-        top: 70px;
-        z-index: 1 !important;
-    }
-
-    .stacking-card:nth-child(2) {
-        top: 75px;
-        z-index: 2 !important;
-    }
-
-    .stacking-card:nth-child(3) {
-        top: 80px;
-        z-index: 3 !important;
-    }
-
-    .stacking-card:nth-child(4) {
-        top: 85px;
-        z-index: 4 !important;
-    }
-
-    .stacking-card:nth-child(5) {
-        top: 90px;
-        z-index: 5 !important;
-    }
-
-    .stacking-card:nth-child(6) {
-        top: 95px;
-        z-index: 6 !important;
-    }
-
-    .stacking-card:nth-child(7) {
-        top: 100px;
-        z-index: 7 !important;
-    }
-
-    .stacking-card:nth-child(8) {
-        top: 105px;
-        z-index: 8 !important;
-    }
-
-    .stacking-card:nth-child(9) {
-        top: 110px;
-        z-index: 9 !important;
-    }
-
-    .stacking-card:nth-child(10) {
-        top: 115px;
-        z-index: 10 !important;
-    }
-
-    .stacking-card-icon {
-        width: 56px;
-        height: 56px;
-        font-size: 1.75rem;
-    }
-
-    .stacking-card-title {
-        font-size: 1.125rem;
-    }
-
-    .stacking-card-desc {
-        font-size: 0.9rem;
-        /* Truncate description to reduce height */
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    /* Show features list on mobile */
-    .stacking-card-features {
-        display: block;
-        font-size: 0.85rem;
-        margin-bottom: var(--space-md);
-    }
-    
-    .stacking-card-features li {
-        margin-bottom: 4px;
-    }
-
-    .stacking-card-pricing-panel {
-        padding: var(--space-sm);
-        max-width: 100%;
-        max-height: 200px;
-        overflow-y: auto;
-    }
-
-    .stacking-card-pricing-panel h4 {
-        font-size: 0.9rem;
-        margin-bottom: 8px;
-    }
-
-    .pricing-row {
-        padding: 6px 10px;
-        font-size: 0.75rem;
-    }
-
-    .pricing-row .label {
-        flex: 1;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        font-size: 0.7rem;
-    }
-
-    .pricing-row .price {
-        white-space: nowrap;
-        flex-shrink: 0;
-        font-size: 0.75rem;
-    }
-
-    /* DO NOT USE overflow:hidden on stacking containers - it breaks sticky */
-    .stacking-section {
+        padding: 44px 0;
         overflow: visible;
     }
 
-    .stacking-cards-container {
+    .stacking-section .container {
+        padding: 0 14px;
         overflow: visible;
-        max-width: 100%;
     }
 
+    .stacking-cards-container,
     .stacking-cards-sticky {
         overflow: visible;
         max-width: 100%;
     }
 
+    .stacking-section-header {
+        margin-bottom: 24px;
+    }
+
+    .stacking-section-header h2 {
+        font-size: 1.35rem;
+        line-height: 1.25;
+        margin-bottom: 6px;
+    }
+
+    .stacking-section-header p {
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+
     .stacking-card {
-        max-width: 100%;
-        box-sizing: border-box;
-        /* Keep position sticky working */
+        padding: 18px 16px;
+        margin-bottom: 12px;
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
         position: -webkit-sticky !important;
         position: sticky !important;
-    }
-
-    .stacking-card-body {
         max-width: 100%;
-        overflow: hidden;
+        box-sizing: border-box;
     }
 
-    .stacking-card-content {
-        max-width: 100%;
-        overflow: hidden;
+    /* Compact Mobile Sticky Offsets */
+    .stacking-card:nth-child(1) { z-index: 1 !important; top: 60px; }
+    .stacking-card:nth-child(2) { z-index: 2 !important; top: 68px; }
+    .stacking-card:nth-child(3) { z-index: 3 !important; top: 76px; }
+    .stacking-card:nth-child(4) { z-index: 4 !important; top: 84px; }
+    .stacking-card:nth-child(5) { z-index: 5 !important; top: 92px; }
+    .stacking-card:nth-child(6) { z-index: 6 !important; top: 100px; }
+    .stacking-card:nth-child(7) { z-index: 7 !important; top: 108px; }
+    .stacking-card:nth-child(8) { z-index: 8 !important; top: 116px; }
+    .stacking-card:nth-child(9) { z-index: 9 !important; top: 124px; }
+    .stacking-card:nth-child(10) { z-index: 10 !important; top: 132px; }
+
+    .stacking-card-header {
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        gap: 12px;
     }
 
-    /* CTA buttons stack on mobile */
-    .stacking-card-cta {
-        flex-direction: column;
-        gap: var(--space-sm);
+    .stacking-card-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.15rem;
     }
 
-    .stacking-card-cta .btn {
-        width: 100%;
-        text-align: center;
-        white-space: nowrap;
+    .stacking-card-title {
+        font-size: 1.0625rem;
+        margin-bottom: 2px;
+    }
+
+    .stacking-card-price {
+        font-size: 0.8125rem;
+    }
+
+    .stacking-card-desc {
         font-size: 0.875rem;
-        padding: 12px 16px;
+        line-height: 1.55;
+        margin-bottom: 14px;
     }
 
-    /* Pricing panel title */
-    .stacking-card-pricing-panel h4 {
-        font-size: 1rem;
-        margin-bottom: var(--space-sm);
-    }
-
-    /* Features list mobile optimization */
     .stacking-card-features {
+        gap: 6px;
+        margin-bottom: 16px;
         padding-left: 0;
     }
 
     .stacking-card-features li {
+        font-size: 0.8125rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
 
     .stacking-card-features li svg {
+        width: 15px;
+        height: 15px;
         flex-shrink: 0;
-        width: 16px;
-        height: 16px;
+    }
+
+    .stacking-card-cta {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .stacking-card-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stacking-card-pricing-panel {
+        padding: 14px;
+        border-radius: var(--radius-sm);
+    }
+
+    .stacking-card-pricing-panel h4 {
+        font-size: 0.875rem;
+        margin-bottom: 8px;
+    }
+
+    .pricing-row {
+        padding: 8px 10px;
+        font-size: 0.8125rem;
     }
 }
 
@@ -7615,6 +7589,70 @@ html, body {
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* === ROOTLY SECTION DIVIDERS & BLUR TRANSITIONS === */
+.section-divider-rootly {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.08) 25%, rgba(0, 0, 0, 0.08) 75%, transparent 100%);
+    position: relative;
+    margin: 0;
+    border: none;
+    display: block;
+}
+
+.section-divider-rootly.dark {
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 25%, rgba(255, 255, 255, 0.12) 75%, transparent 100%);
+}
+
+.section-blur-transition {
+    position: relative;
+}
+
+.section-blur-transition::before {
+    content: '';
+    position: absolute;
+    inset: -20px 0 auto 0;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    mask-image: linear-gradient(to bottom, transparent, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black, transparent);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* === ATMOSPHERIC HERO (Aesthetic Nature Canvas) === */
+.hero-atmospheric {
+    position: relative;
+    padding: 96px 0 60px;
+    background: 
+        linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(250, 250, 248, 0.82) 45%, rgba(250, 250, 248, 0.98) 100%),
+        radial-gradient(ellipse 70% 45% at 50% 0%, rgba(37, 99, 235, 0.06) 0%, transparent 80%),
+        url('../assets/images/nature_aesthetic_ambient.jpg') top center / cover no-repeat;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+}
+
+.hero-atmospheric::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, var(--surface));
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .hero-atmospheric {
+        padding: 44px 0 28px;
+        background-position: center top;
+    }
 }
 
 /* === PRICING CARDS (Rootly: warm/dark pair) === */
